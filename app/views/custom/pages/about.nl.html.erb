@@ -1,0 +1,66 @@
+<% @page_title = 'Over ons' %>
+<% @css_to_load = 'about' %>
+
+<h1>Over ons</h1>
+
+<div id="aboutus" class="content_box">
+	<p>Het <%= link_to_bbpf %>  is het nationaal knooppunt voor het <%= link_to_gbif %> (Global Biodiversity Information Facility). <br>
+		<p>
+			Onze missie is het bevorderen van biodiversiteitsonderzoek dat ten goede komt
+			van duurzame ontwikkeling. We doen dit door:
+		</p>
+
+		<ul>
+			<li>het bevorderen van de toegankelijkheid van gegevens over biodiversiteit, wetenschap en onderzoek.</li>
+			<li>het aanmoedigen van interdisciplinaire samenwerking tussen wetenschappers.</li>
+			<li>de interactie tussen wetenschappers, beleidsmakers en belanghebbenden aangaande biodiversiteit aan te moedigen.</li>
+			<li>advies te verlenen over prioritair biodiversiteitsonderzoek.</li>
+			<li>het Belgisch biodiversiteitsonderzoek op internationale fora te promoten.</li>
+		</ul>
+		<p>
+			Het Belgische gegevensportaal laat toe primaire biodiversiteitsgegevens betreffende 
+			het Belgische grondgebied, gepubliceerd via het GBIF, te visualiseren en/of te exporteren.
+		</p>
+
+		<p>
+			Bezoek ons 
+			<%= link_to 'hoofdportaal', 'http://www.biodiversity.be/bbpf/aboutus.html', :class => 'external' %>
+			voor meer informatie over wie we zijn en wat we doen…
+		</p>
+	</div>
+
+	<h2 id="links">Links</h2>
+	<div class="content_box">
+		<ul>
+			<%# Keep it sorted. Add BG images ?%>
+			<li><%= link_to_col2010 %></li>
+			<li><%= link_to_eea 'Europees Milieuagentschap' %></li>
+			<li><%= link_to_gbif %></li>
+			<li><%= link_to_belspo 'Federaal wetenschapsbeleid' %></li>
+		</ul>
+	</div>
+
+	<h2 id="tools">Tools</h2>
+	<div class="content_box">
+		<p>De volgende tools werden ondermeer gebruikt bij de ontwikkeling van deze website : </p>
+		<ul>
+			<li>Het <%= link_to 'Ruby on Rails', 'http://www.rubyonrails.org', :class => 'external' %> web framework.</li>
+			<li><%= link_to 'OpenLayers', 'http://openlayers.org', :class => 'external'%>een dynamische map viewer van de <%= link_to 'The Open Source Geospatial Foundation', 'http://www.osgeo.org', :class => 'external'%>.</li>
+			<li>Het <%= link_to 'PostgreSQL', 'http://www.postgresql.org', :class => 'external'%> object-relationele databanksysteem met de <%= link_to 'PostGIS', 'http://postgis.refractions.net', :class => 'external' %> extentie.</li>
+		</ul>
+	</div>
+
+	<h2 id="resources">Bronnen</h2>
+	<div class="content_box">
+		<p>
+			Sommige iconen op deze website maken dankzij
+			<%= link_to 'Mark James', 'http://www.famfamfam.com/', :class => 'external' %>
+			deel uit van de
+			<%= link_to 'Silk Icons Set', 'http://www.famfamfam.com/lab/icons/silk/', :class => 'external' %>
+			, de licentie valt onder de
+			<%= link_to 'Creative Commons Attribution 2.5 License', 'http://creativecommons.org/licenses/by/2.5/', :class => 'external' %>
+			.
+		</p>
+		
+	</div>
+

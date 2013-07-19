@@ -1,0 +1,50 @@
+<% @page_title = 'About us' %>
+<% @css_to_load = 'about' %>
+
+<h1>About us</h1>
+
+<div id="aboutus" class="content_box">
+	<p>The <%= link_to_bbpf %>  is the national node of Global Biodiversity Information Facility (<%= link_to_gbif %>).<br>
+		<p>Our mission is to foster biodiversity research that contributes to sustainable development, by:</p>
+		<ul>
+			<li>Facilitating access to biodiversity data, science and research information.</li>
+			<li>Encouraging interdisciplinary cooperation amongst scientists.</li>
+			<li>Stimulating interaction between scientists, policy makers and stakeholders in biodiversity research.</li>
+			<li>Advising on the designation of biodiversity research priorities.</li>
+			<li>Promoting Belgian biodiversity research at international fora.</li>
+		</ul>
+		<p>The aim of this Belgian Data Portal is to provide a means to explore GBIF data (species occurrences based on collection specimens or observations) <span class="imp">pertaining to  Belgium</span> to our research community.</p>
+		<p>Visit our <%= link_to 'main portal', 'http://www.biodiversity.be/bbpf/aboutus.html', :class => 'external' %> for further information about who we are and what we are doing.</p>
+	</div>
+
+	<h2 id="links">Links</h2>
+	<div class="content_box">
+		<ul>
+			<%# TODO: Add BG images %>
+			<li><%= link_to_belspo %></li>
+			<li><%= link_to_col2010 %></li>
+			<li><%= link_to_eea %></li>
+			<li><%= link_to_gbif %></li>
+		</ul>
+	</div>
+
+	<h2 id="tools">Tools</h2>
+	<div class="content_box">
+		<p>The following tools, among others, were used to develop this website : </p>
+		<ul>
+			<li>The <%= link_to 'Ruby on Rails', 'http://www.rubyonrails.org', :class => 'external' %> web framework.</li>
+			<li><%= link_to 'OpenLayers', 'http://openlayers.org', :class => 'external'%>, a dynamic map viewer from the <%= link_to 'The Open Source Geospatial Foundation', 'http://www.osgeo.org', :class => 'external'%>.</li>
+			<li>The <%= link_to 'PostgreSQL', 'http://www.postgresql.org', :class => 'external'%> object-relational database system with its <%= link_to 'PostGIS', 'http://postgis.refractions.net', :class => 'external' %> extension.</li>
+		</ul>
+	</div>
+
+	<h2 id="resources">Resources</h2>
+	<div class="content_box">
+		<p>
+			Some icons on this website are part of the 
+			<%= link_to 'Silk Icons Set', 'http://www.famfamfam.com/lab/icons/silk/', :class => 'external' %>, thanks to
+			<%= link_to 'Mark James', 'http://www.famfamfam.com/', :class => 'external' %>. They are licensed under the
+			<%= link_to 'Creative Commons Attribution 2.5 License', 'http://creativecommons.org/licenses/by/2.5/', :class => 'external' %>.
+		</p>
+		
+	</div>

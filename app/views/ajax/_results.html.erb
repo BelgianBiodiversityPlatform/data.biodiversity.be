@@ -1,0 +1,25 @@
+<div id="results">
+<% unless results.empty? %>
+
+	<p id="data_agreement">
+		<%= render :partial => partial_name_localized("data_agreement") %>
+	</p>
+
+	<p id="view_switcher">	
+		<% if mode == :species_list %>
+			<%= link_to_function t('rt.occurrences_table'), "switchView('occurrences')", :class => 'cupid-green' %>
+		<% elsif mode == :occurrences_table %>
+			<%= link_to_function t('rt.species_list'), "switchView('species_list')", :class => 'cupid-green' %>
+		<% end %>
+	</p>
+
+	<% if mode == :species_list -%>
+	<%= render(:partial => 'specieslist', :object => results) %>
+	<% elsif mode == :occurrences_table -%>
+	<%= render(:partial => 'occ_table', :object => results, :locals => {:clickable_georef => clickable_georef}) %>
+	<% end %>
+
+<% else %>
+  <p><%= t 'rt.sorry_no_results' %></p>
+<% end %>
+</div>

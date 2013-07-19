@@ -1,0 +1,188 @@
+<% @page_title = t 'cus.page_titles.technology' %>
+
+<h1><%= t('cus.projects.technological_aspects') %></h1>
+
+<%= render :partial => ('ta_intro.' + params[:locale]) %>
+
+<% software = [
+    {
+      :html_id => 'apache',
+      :title => 'Apache',
+      :text =>  {
+                  'en' => '<p>The ' + link_to('Apache HTTP Server', 'http://httpd.apache.org/', :class => 'external') +
+                         'project is an effort to develop and maintain an open-source HTTP server for modern
+                          operating systems including UNIX, Mac OS X and Microsoft Windows.
+                          The goal of this project is to provide a secure, efficient and extensible server
+                          that provides HTTP services in sync with the current HTTP standards.</p>',
+                   'fr' => '<p>' + link_to('Apache HTTP Server', 'http://httpd.apache.org/', :class => 'external') +
+                           'est une initiative visant à développer et maintenir un serveur web (HTTP) pour les
+                           systèmes d\' exploitation modernes, notamment UNIX, Mac OS X et Microsoft Windows. Le but
+                           de ce projet est de fournir un serveur web sécurisé, performant et extensible tout en collant au mieux
+                           aux avancées technologiques des standards du web.</p>'
+                }
+    },
+    {
+      :html_id => 'linux',
+      :title => 'Linux',
+      :text =>  {
+                  'en' => '<p>' + link_to('Linux', 'http://en.wikipedia.org/wiki/Linux', :class => 'external')  +
+                          'is an advanced operating system derived from Unix. Apart from the fact that it\'s
+                          freely distributed, Linux\'s functionality, adaptability and robustness, is now
+                          recognized as a competitive alternative to proprietary operating systems. IBM,
+                          Hewlett-Packard and other large companies of the computing world have embraced
+                          Linux and support its ongoing development.</p>',
+                  'fr' => '<p>' + link_to('Linux', 'http://fr.wikipedia.org/wiki/Linux', :class => 'external')  +
+                          'est un système d\'exploitation avancé inspiré par UNIX. En plus d\'être distribué sous une
+                          license libre, les fonctionnalités de Linux, sa souplesse et sa robustesse
+                          font de lui une alternative très crédible aux systèmes d\'exploitations propriétaires. IBM,
+                          Hewlett-Packard et d\'autres acteurs importants de l\'industrie informatique
+                          utilisent Linux et participent à son développement.</p>'
+                }
+    },
+    {
+      :html_id => 'lucene',
+      :title => 'Lucene',
+      :text =>  {
+                  'en' => '<p>Apache ' + link_to('Lucene', 'http://lucene.apache.org/', :class => 'external') +
+                          'is a high-performance, full-featured text search engine library written entirely in Java.
+                          It is suitable for nearly any application that requires full-text search, especially cross-platform.
+                          Lucene has been used in our ENBI WP13 projects.</p>',
+                  'fr' => '<p>Apache ' + link_to('Lucene', 'http://lucene.apache.org/', :class => 'external') + 'est un moteur de recherche
+                          complet et performant écrit en Java. Il convient à la presque totalité des applications nécessitant une recherche
+                          de type "full-text", en particulier les applications multi-plateformes. Nous avons utilisé Lucene notamment
+                          pour les projets ENBI WP13.</p>'
+                }
+    },
+    {
+      :html_id => 'openlayers',
+      :title => 'OpenLayers',
+      :text =>  {
+                  'en' => '<p>' + link_to('OpenLayers', 'http://openlayers.org/', :class => 'external') +
+                          'is an open source (provided under a modified BSD license) Javascript library for displaying map
+                          data in web browsers. It provides an API for building rich web-based geographic applications similar
+                          to Google Maps and Bing Maps. The Belgian Data Portal uses OpenLayers to build occurrences maps.</p>',
+                  'fr' => '<p>' + link_to('OpenLayers', 'http://openlayers.org/', :class => 'external') +
+                          'est une bibliothèque Javascript sous license libre permettant de présenter des données cartographiques
+                          dans les pages web. Il met à disposition une API permettant de créer des applications web cartographiques
+                          riches, de manière similaire à Google Maps et Bing Maps. Le Belgian Data Portal utilise
+                          OpenLayers pour ses fonctionalités cartographiques.</p>'
+                }
+    },
+    {
+      :html_id => 'opensource',
+      :title => 'Open Source',
+      :text =>  {
+                  'en' => '<p>The '+ link_to_bbpf + ' IT solutions are based on '+
+                          link_to('open source', 'http://en.wikipedia.org/wiki/Open_source', :class => 'external') +
+                          'software and international standards. Open source solutions are created and maintained as a
+                          collaborative effort by programmers sharing their code with the worldwide community
+                          of IT developpers. Linux operating system and Apache web server are two well
+                          known examples of open source software which superseed most of the existing commercial solutions.</p>',
+                  'fr' => '<p>Les solutions informatiques développées par la '+ link_to_bbpf + ' sont basées sur les
+                          logiciels ' + link_to('open source', 'http://fr.wikipedia.org/wiki/Open-Source', :class => 'external') +
+                          'et les standards ouverts. Les logiciels libres et open-source sont développés mondialement 
+                          et collaborativement. Le système d\'exploitation Linux et le serveur web Apache sont deux
+                          exemple de logiciels open-source plus avancés que la plupart de leurs concurrents propriétaires.</p>'
+                }
+    },
+    {
+      :html_id => 'postgresql',
+      :title => 'PostgreSQL',
+      :text =>  {
+                 'en' => '<p>' + link_to('PostgreSQL', 'http://www.postgresql.org/', :class => 'external') +
+                  'is probably the world\'s most advanced open source database and has been chosen as
+                  our primary SQL server. It has more than 15 years of active development and a
+                  proven architecture that has earned it a strong reputation for reliability,
+                  data integrity and correctness. PostgreSQL prides itself in standards compliance.
+                  Its SQL implementation strongly conforms to the ANSI-SQL 92/99 standards.</p>',
+
+                'fr' => '<p>' + link_to('PostgreSQL', 'http://www.postgresql.org/', :class => 'external') +
+                  ' est probablement la plus avancée des bases de données relationnelles Open Source et à été choisie
+                  comme SGBDR pour nos projets. PostgreSQL est développé activement depuis plus de 15 ans
+                  et son architecture solide a gagné une forte réputation pour sa fiabilité et son respect de l\'intégrité
+                  des données. PostgreSQL est un projet respectueux des standards, et son implémentation
+                  SQL adhère aux normes ANSI-SQL 92/99.</p>'
+                }
+    },
+    {
+      :html_id => 'python',
+      :title => 'Python',
+      :text =>  {
+                  'en' => '<p>' + link_to('Python', 'http://www.python.org/', :class => 'external') +
+                          'is an interpreted, interactive, object-oriented programming language which combines
+                          remarkable power with very clear syntax. The Python implementation is portable:
+                          it runs on many brands of UNIX, on Windows, OS/2, Mac, Amiga, and many other
+                          platforms. In addition, a large number of extension modules have been developed
+                          for Python. Some are part of the standard library of tools, usable in any Python
+                          program. Others are specific to a particular platform or environment or provide
+                          application-specific functionality.</p>',
+                  'fr' => '<p>' + link_to('Python', 'http://www.python.org/', :class => 'external') +
+                          'est un langage de programmation interpreté, interactif et orienté objet qui
+                          combine une puissance remarquable et une syntaxe très claire.
+                          Python est portable : il fonctionne sous tous les Unix et Unix-like courants,
+                          sous Windows, OS/2, Mac OS X et de nombreuses autres plates-formes.
+                          De nombreuses extensions à Python existent : certaines font partie de la bibliothèque
+                          standard de Python et son utilisables dans n\'importe quel programme, d\'autres sont
+                          spécifiques à une plate-forme ou à un environnement (développement web, ...).</p>'
+                }
+    },
+    {
+      :html_id => 'ror',
+      :title => 'Ruby on Rails',
+      :text =>  {
+                  'en' => '<p>' + link_to('Ruby On Rails', 'http://rubyonrails.org/', :class => 'external') +
+                          'often shortened to Rails or RoR, is an open source web application framework for
+                          the Ruby programming language. It is intended to be used with an Agile development
+                          methodology which is used by web developers for rapid development.</p>',
+                  'fr' => '<p>' + link_to('Ruby On Rails', 'http://rubyonrails.org/', :class => 'external') +
+                          ', souvent simplement nommé Rails ou RoR, est un framework de développement web pour
+                          le langage de programmation Ruby. Il est conçu pour être utilisé avec un méthode de
+                          développement Agile, qui est utilisée par de très nombreux développeurs pour une mise en
+                          oeuvre rapide et efficace de leurs projets.</p>'
+                }
+    },
+    {
+      :html_id => 'standards',
+      :title => 'Standards',
+      :text =>  {
+                  'en' => '<p>Biodiversity Information Standards (' + link_to('TDWG', 'http://www.tdwg.org/', :class => 'external') +
+                          ') is an international non-profit group that develops standards and protocols
+                          for sharing biodiversity data. The ' + link_to_bbpf + ' endorses and
+                          promotes GBIF and TDWG Standards such as ' +
+                          link_to('DarwinCore', 'http://www.tdwg.org/standards/450/', :class => 'external') +
+                          ' and ' + link_to('Tapir', 'http://www.tdwg.org/standards/449/', :class => 'external') + '.</p>',
+                  'fr' => '<p>Biodiversity Information Standards (' + link_to('TDWG', 'http://www.tdwg.org/', :class => 'external') +
+                          ') est une organisation internationale sans but lucratif qui développe des standards et des protocoles
+                          pour le partage des données de biodiversité. La ' + link_to_bbpf + ' utilise et promeut
+                          les standards du GBIF et du TDWG comme ' + link_to('DarwinCore', 'http://www.tdwg.org/standards/450/', :class => 'external') +
+                          ' et ' + link_to('Tapir', 'http://www.tdwg.org/standards/449/', :class => 'external') +'.</p>'
+                }
+    },
+    {
+      :html_id => 'subversion',
+      :title => 'Subversion',
+      :text =>  {
+                  'en' => '<p>' + link_to('Subversion', 'http://subversion.tigris.org/', :class => 'external') +
+                          '(SVN) is a version control system initiated in 2000 by CollabNet Inc. It is
+                          used to maintain current and historical versions of files such as source code,
+                          web pages, and documentation. Its goal is to be a mostly-compatible successor
+                          to the widely used Concurrent Versions System (CVS).</p><p>Subversion is well-known
+                          in the open source community and is used on many open source projects.</p>
+                          <p>Subversion is released under the Apache License, making it open source.</p>',
+                  'fr' => '<p>' + link_to('Subversion', 'http://subversion.tigris.org/', :class => 'external') +
+                          '(SVN) est un système de gestion de versions lancé en 2000 par CollabNet Inc.
+                          Il est utilisé pour faciliter le travail collaboratif et gérer les version courantes
+                          et historiques de fichiers, par exemple du code source, des pages web et de la documentation.
+                          Il a pour but d\'être le plus familier possible pour les utilisateurs du célèbre CVS,
+                          tout en en corrigeant les principales lacunes.
+                          </p><p>Subversion est un logiciel bien connu de la communauté Open Source et est utilisé par bon nombre de projets.</p>
+                          <p>Subversion est distribué sous la license libre et Open Source Apache.</p>'
+                }
+    }
+
+
+] %>
+
+<%= render :partial => 'project_blocks', :object => software %>
+
+

@@ -1,0 +1,81 @@
+<% @page_title = t 'cus.page_titles.digit_2007' %>
+
+<% projects = [
+                {
+                  :html_id => 'cap',
+                  :name => 
+                              'Plant reference collections from Central Africa',
+                  :promotors => link_to('Dr P. Stoffelen', 'http://biobel.biodiversity.be/person/show/1023', :class => 'external') + ", " + (link_to 'Dr S. Dessein', 'http://biobel.biodiversity.be/person/show/1035', :class => 'external') + "(National Botanical Garden of Belgium)",
+                  :image => 'custom/cap.jpg',
+                  :abstract => "This portal is the result of the digitalisation of reference collections of plant
+                      material from Central Africa (DR Congo, Rwanda and Burundi). Digitizing specimen
+                      information is the first crucial step in the realisation of a widely accessible
+                      ‘working list of known plant species’ for this region and is an important tool
+                      for repatriation of knowledge to the countries of origin. In this first stage,
+                      we focussed on three families: Rubiaceae, Balsaminaceae and Orchidaceae. The
+                      three families account for more than 10% of the plant diversity of Central
+                      Africa and represent a high scientific and economic value.",
+                                
+                  :links => [
+                            {:name => 'dataset', :url => 'http://data.gbif.org/datasets/resource/8377/'},
+                            {:name => 'website', :url => 'http://projects.biodiversity.be/brcap'}
+                            ]
+                  },
+                  {
+                    :html_id => 'ants',
+                    :name => 'Paraguyan Ants from the Dry Chaco',
+                              
+                    :promotors => link_to('Dr M. Leponce', 'http://biobel.biodiversity.be/person/show/1092', :class => 'external') + ", " + (link_to 'Dr T. Delsinne', 'http://biobel.biodiversity.be/person/show/369', :class => 'external') + '(Royal Belgian Institute of Natural Sciences)',
+                    :image => 'custom/ants.jpg',
+                    :abstract => "Since 2002, I am conducting a Ph.D. at the Biological Evaluation Section of the RBINS under the
+                      supervision of Dr. Maurice Leponce and Prof. Yves Roisin (Université Libre de Bruxelles). My thesis
+                      deals with spatial fidelity and species turnover between ant and plant assemblages in the Paraguayan
+                      Dry Chaco. Its completion is due in June 2007. The data collected about the distribution of ants along
+                      an aridity gradient is of special interest in a context of climate change. Five sampling missions were
+                      carried out during the study and allowed us to gather the most extensive ant collection for this
+                      neotropical region (212 morphospecies collected, around 20% new to science). We propose to
+                      complete the digitisation of this reference collection of ants of the Paraguayan Dry Chaco and to make
+                      it publically accessible on an interactive website.",
+                    :links => [
+                              {:name => 'dataset', :url => 'http://data.gbif.org/datasets/resource/7982/'},
+                              {:name => 'website', :url => 'http://projects.biodiversity.be/ants'}
+                              ]
+                  },
+                  {
+                    :html_id => 'dacine',
+                    :name => 
+                              'Specimen database of dacine fruit flies from Africa',
+                              
+                    :promotors => link_to('Dr M. De Meyer', 'http://biobel.biodiversity.be/person/show/1288', :class => 'external') + ' (Royal Museum for Central Africa)',
+                    :abstract => "Currently a website on specimen data for ceratitidine fruit flies of Africa already exists,
+                      comprising data for 140 taxa. Because of recent taxonomic revisions, providing reliable specimen
+                      data, the original dataset can be expanded with data for additional 200 taxa, and the number of
+                      block records can be doubled representing data of almost 40000 specimens from 56 collections.
+                      The expanded dataset would comprise 93 % of all fruit fly genera of major economic significance from Africa.",
+                     
+                    :links => [
+                              {:name => 'dataset', :url => 'http://data.gbif.org/datasets/resource/92/'},
+                              {:name => 'website', :url => 'http://projects.bebif.be/enbi/fruitfly'}
+                              ]
+                  },
+                  {
+                    :html_id => 'nematodes',
+                    :name => 'Inventorying the nematode (type) collection of the zoology museum',
+                    :promotors => link_to('Prof. Dr D. Adriaens', 'http://biobel.biodiversity.be/person/show/1542', :class => 'external') + ' (Ghent University)',
+                    :abstract =>'The Ghent University Zoology Museum curates a nematode (type) collection of over
+                      4000 slides, half of which are already inventoried digitally. Most of the 2000 slides that still
+                      need digital cataloguing contain type specimens. With this project we aim to inventory and
+                      identify the remainder of this collection. The results will be made accessible through the
+                      GBIF website.',
+                  
+                  :links => [
+                            {:name => 'dataset', :url => 'http://data.gbif.org/datasets/resource/99/' }
+                            ]
+                  },
+              ] %>
+
+<h1><%= t 'cus.projects.dc_2007' %></h1>
+<h3><%= t 'cus.projects.four_2007' %></h3>
+<%= render(:partial => 'digitxxx', :locals => {:projects => projects}) %>
+
+

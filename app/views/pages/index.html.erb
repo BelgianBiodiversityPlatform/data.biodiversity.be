@@ -1,0 +1,58 @@
+<% @page_title = t('page_titles.home') %>
+
+<% @css_to_load = 'index' %>
+<% @load_openlayers = true %>
+<% @js_to_load = 'index' %>
+<% @onload = "init_index()" %>
+
+<div id="columns">
+  <div id="quicksearch">
+    <h1>
+      <%= render :partial => partial_name_localized('/custom/pages/index_h1_content') %>
+    </h1>
+    <%= label_tag :sn, t('index.by_scientific_name'), :style => 'width: 25em;' %>
+    <%= text_field_tag :sn, nil, :size => 22 %>
+    <%= link_to_function image_tag("searchbutton.#{I18n.locale.to_s}.png", :alt => t('search.go'), :mouseover => "searchbutton_on.#{I18n.locale.to_s}.png", :size => '57x17', :style => 'margin-bottom: -3px;'), 'updateSn($F("sn"))', :class => 'nohover' %>
+    <%= ajax_spinner('spin_sn')%>
+
+    <div id="autocomplete_choices"></div>
+    <script type="text/javascript">
+      new Ajax.Autocompleter( "sn",
+      "autocomplete_choices",
+      "<%= url_for :controller => 'pages', :action => 'autocomplete_sn'%>",
+      {minChars: 2,
+        indicator: 'spin_sn',
+        afterUpdateElement : function() {updateSn($F("sn"));}}
+    );
+    </script>
+
+    <p class="searchtitle"><%= t('index.by_geographic_zone') %></p>
+    <div id="map" style="width: 450px; height: 370px;"></div>
+    <%= render :partial => 'overlays' %>
+    <%= render :partial => '/custom/pages/index_under_map' %>
+  </div>
+
+  <div id="blabla">
+
+    <% content_tag :div, :id => "logos" do -%>
+      <%= link_to_gbif(image_tag('gbif_logo.png', :alt => 'GBIF logo', :id => 'gbiflogo'), nil) %>
+      <%= render :partial => '/custom/pages/index_additional_logos' %>
+    <% end -%>
+
+    <div id="welcome">
+      <%= render :partial => partial_name_localized('/custom/pages/welcome') %>
+      <p>
+        <span class="small">
+          <%= t 'index.browser_warning' %>
+        </span>
+      </p>
+      <%= render :partial => 'stats' %>
+    </div>
+
+  </div>
+</div>
+
+<div id="search_results">
+  <p id="pre_search"><%= t('index.enter_a_scientific') %></p>
+</div>
+

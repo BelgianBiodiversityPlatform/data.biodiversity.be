@@ -1,0 +1,34 @@
+nl:
+  cus:
+    menu_projects:
+      our_projects: Onze projecten
+      digit_call: Digitalisatie projecten
+      2010_call: Digitalisatie oproep 2010
+      2009_call: Digitalisatie oproep 2009
+      2007_call: Digitalisatie oproep 2007
+      2006_call: Digitalisatie oproep 2006
+      others: Andere
+      technology: Technologie
+      cleaning_tools: Cleaning tools
+    page_titles:
+      digit_2006: Digitalisatie oproep 2006
+      digit_2007: Digitalisatie oproep 2007
+      digit_2009: Digitalisatie oproep 2009
+      digit_2010: Digitalisatie oproep 2010
+      technology: Technology
+      tools: Cleaning tools
+    projects:
+      dc_2010: 'Digitalisatie oproep 2010'
+      three_2010: 'Drie projecten werden geselecteerd voor de 2010 oproep'
+      dc_2009: 'Digitalisatie oproep 2009'
+      three_2009: 'Drie projecten werden geselecteerd voor de 2009 oproep'
+      dc_2007: 'Digitalisatie oproep 2007'
+      four_2007: 'Vier projecten werden geselecteerd voor de 2007 oproep'
+      dc_2006: 'Digitalisatie oproep 2006'
+      four_2006: 'Vier projecten werden geselecteerd voor de 2006 oproep'
+      technological_aspects: 'Technische aspecten'
+      cleaning_tools: 'Cleaning tools'
+      bdc_ic: 'Het opkuisen van biodiversiteitsdata is een tijdsrovende en inspannende job'
+      you_will_find: 'Hieronder staan een aantal door ons geselecteerde tools die kunnen helpen de kwaliteit van je dataset aanzienlijk te verbeteren'
+    
+    bbpf: Belgisch Biodiversiteitsplatform

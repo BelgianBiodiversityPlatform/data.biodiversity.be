@@ -1,0 +1,35 @@
+fr:
+  cus:
+    menu_projects:
+      our_projects: Nos projets
+      digit_call: Appels à numérisation
+      2010_call: Appel 2010
+      2009_call: Appel 2009
+      2007_call: Appel 2007
+      2006_call: Appel 2006
+      others: Autres
+      technology: Technologie
+      cleaning_tools: Outils d'assainissement 
+    page_titles:
+      digit_2006: Appel 2006
+      digit_2007: Appel 2007
+      digit_2009: Appel 2009
+      digit_2010: Appel 2010
+      technology: Technologie
+      tools: Outils d'assainissement
+    projects:
+      dc_2010: Appel à numérisation 2010
+      three_2010: Trois projets ont été sélectionnés à l'issue de l'appel à numérisation 2010.
+      dc_2009: Appel à numérisation 2009
+      three_2009: Trois projets ont été sélectionnés à l'issue de l'appel à numérisation 2009.
+      dc_2007: Appel à numérisation 2007
+      four_2007: Quatre projets ont été sélectionnés à l'issue de l'appel à numérisation 2007.
+      dc_2006: Appel à numérisation 2006
+      four_2006: Quatre projets ont été sélectionnés à l'issue de l'appel à numérisation 2006.
+      technological_aspects: Aspects technologiques
+      cleaning_tools: Outils d'assainissement
+      bdc_ic: L'assainissement des données de biodiversité est une tache chronophage et souvent ennuyeuse.
+      you_will_find: Vous trouverez ci-dessous quelques uns des meilleurs outils disponibles pour vous aider à améliorer la qualité de vos données.
+    
+    bbpf: Plate-forme belge biodiversité
+

@@ -1,0 +1,6 @@
+<h2 id="<%= pblock[:html_id]%>"><%= pblock[:title] %></h2>
+<div class="abstract">
+  <%# Default to english if we don't have specific text %>
+  <%= pblock[:text][params[:locale]] or pblock[:text]['en']%>
+</div>
+<%= back_to_top %>

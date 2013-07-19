@@ -1,0 +1,49 @@
+
+div#container div#footer p#browser_warning {
+	color: #a9d4ff;
+	font-size: 0.7em;
+}
+
+.content_box, .abstract{
+	background-color: #F0F0F0;
+    border:1px solid #C0C0C0;
+    padding: 10px;
+    color: #222;
+}
+
+/* BEGIN: Page footer, under bottom.png */
+div#container div#footer p {
+    background-color: #333; 
+    color: #fff;
+}
+
+
+/* specific to CORINE legend */
+div#legend h1{
+  color: black;
+}
+
+div#legend h2 {
+/*  margin-left: 20px;*/
+	margin-top: 50px;
+}
+
+div#legend p {
+  margin-left: 40px;
+}
+
+div#legend div#col_1 {
+  float: left;
+  width: 400px;
+  /*border-right: 5px dashed black;*/
+}
+
+div#legend div#col_2 {
+  /*float:left;*/
+  margin-left: 400px;
+}
+
+div#corine_credits {
+  font-size: 0.7em;
+  border: 1px solid black;
+}

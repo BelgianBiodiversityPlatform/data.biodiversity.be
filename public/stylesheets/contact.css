@@ -1,0 +1,36 @@
+fieldset.submit {
+    border:0 none #FFFFFF;
+    float:none;
+    width:auto;
+}
+
+fieldset.submit input {
+    margin-top: 10px;
+}
+
+div#contact_container {
+	width:700px;
+	margin: 0 auto;
+}
+
+fieldset {
+    clear:left;
+    float:left;
+    margin:1em 0 0;
+    padding:0;
+    width: 100%;
+}
+
+fieldset li {
+    margin-bottom: 5px;
+}
+
+legend {
+    font-weight:bold;
+    margin-left:1em;
+}
+
+label {
+    float: left;
+    width: 12em;
+}

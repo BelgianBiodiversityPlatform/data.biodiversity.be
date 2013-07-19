@@ -1,0 +1,62 @@
+<% @page_title = t('page_titles.home') %>
+
+<% @css_to_load = 'index2' %>
+<% @load_openlayers = true %>
+<% @js_to_load = 'index' %>
+<% @onload = "init_index()" %>
+
+<div id="columns">
+	<div id="blabla">
+
+		<div id="welcome">
+			<%= render :partial => partial_name_localized('/custom/pages/welcome') %>
+
+			<%= render :partial => 'stats' %>
+		</div>
+
+		<% content_tag :div, :id => "logos" do -%>
+		<%= link_to_gbif(image_tag('gbif_logo.png', :alt => 'GBIF logo', :id => 'gbiflogo'), nil) %>
+		<%= render :partial => '/custom/pages/index_additional_logos' %>
+		<% end -%>
+
+	</div>
+
+	<div id="quicksearch">
+		<h1>
+			<%= render :partial => partial_name_localized('/custom/pages/index_h1_content') %>
+		</h1>
+		<p id="search_intro" ><%= t('index.enter_a_scientific') %></p>
+		
+		<%= label_tag :sn, t('index.by_scientific_name'), :style => 'width: 25em;' %>
+		<%= text_field_tag :sn %>
+		<%= link_to_function t('index.search'), 'updateSn($F("sn"))', :class => 'cupid-green' %>
+		<%= ajax_spinner('spinner') %>
+
+		<div id="autocomplete_choices"></div>
+		
+		<script type="text/javascript">
+		
+		new Ajax.Autocompleter( "sn",
+		"autocomplete_choices",
+		"<%= url_for :controller => 'pages', :action => 'autocomplete_sn'%>",
+		{minChars: 2,
+			indicator: 'spinner',
+			afterUpdateElement : function() {updateSn($F("sn"));}}
+		);
+		</script>
+
+		<p class="searchtitle"><%= t('index.by_geographic_zone') %></p>
+		
+		<div id="map_container" style="position: absolute; z-index: 1000;">
+			<div class="olControlEditingToolbar" id="map_toolbar"></div>
+			<div id="map" style="width: 558px; height: 360px; overflow: auto;"></div>
+			<%= render :partial => 'overlays' %>
+			<%= render :partial => '/custom/pages/index_under_map' %>
+		</div>
+	</div>
+	
+</div>
+
+<div id="search_results">
+  
+</div>

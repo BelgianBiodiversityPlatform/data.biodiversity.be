@@ -1,0 +1,56 @@
+<% @page_title = 'A propos' %>
+<% @css_to_load = 'about' %>
+
+<h1>A propos</h1>
+
+
+<div id="aboutus" class="content_box">
+	<p>La <%= link_to_bbpf %> est le noeud national du Global Biodiversity Information Facility (<%= link_to_gbif %>).<br>
+		<p>Notre mission est de promouvoir et encourager la recherche scientifique portant sur la biodiversité en :</p>
+		<ul>
+			<li>Facilitant l'accès aux données relatives à la biodiversité.</li>
+			<li>Encourageant une coopération multidisciplinaire entre scientifiques.</li>
+			<li>Stimulant les échanges entre scientifiques, décideurs et autres intervenants dans la recherche sur la biodiversité.</li>
+			<li>Dégageant des priorités d'action dans le domaine de la recherche en biodiversité.</li>
+			<li>Donnant de la visibilité à la recherche portant sur la biodiversité en Belgique au sein d'initiatives internationales.</li>
+		</ul>
+		<p>
+			L'objectif du Portail Belge des Données est de permettre à notre communauté scientifique, 
+			mais aussi à un plus large public, d'explorer les données du GBIF (provenant de 
+			collections ou d'observations) en Belgique. 
+		</p>
+
+		<p>Visitez notre <%= link_to 'site principal', 'http://www.biodiversity.be/bbpf/aboutus.html', :class => 'external' %> pour plus d'informations sur nous et nos activités.</p>
+	</div>
+
+	<h2 id="links">Liens</h2>
+	<div class="content_box">
+		<ul>
+			<%# Keep it sorted. Add BG images %>
+			<li><%= link_to_eea "Agence européenne pour l'environnement" %>
+				<li><%= link_to_col2010 %></li>	
+				<li><%= link_to_gbif %></li>
+				<li><%= link_to_belspo 'Politique scientique fédérale' %></li>
+			</ul>
+		</div>
+
+		<h2 id="tools">Outils</h2>
+		<div class="content_box">
+			<p>Les outils suivants ont été utilisé dans le développement de ce site : </p>
+			<ul>
+				<li>Le framework de développement web <%= link_to 'Ruby on Rails', 'http://www.rubyonrails.org', :class => 'external' %>.</li>
+				<li><%= link_to 'OpenLayers', 'http://openlayers.org', :class => 'external'%>, un module d'affichage cartographique de l'<%= link_to 'Open Source Geospatial Foundation', 'http://www.osgeo.org', :class => 'external'%>.</li>
+				<li>La base de données relationnelle <%= link_to 'PostgreSQL', 'http://www.postgresql.org', :class => 'external'%> et <%= link_to 'PostGIS', 'http://postgis.refractions.net', :class => 'external' %>, son extension SIG.</li>
+			</ul>
+		</div>
+
+		<h2 id="resources">Ressources</h2>
+		<div class="content_box">
+			<p>
+				Certaines icones utilisées sur ce site web proviennent du
+				<%= link_to 'Silk Icons Set', 'http://www.famfamfam.com/lab/icons/silk/', :class => 'external' %> par
+				<%= link_to 'Mark James', 'http://www.famfamfam.com/', :class => 'external' %>. Elles sont soumises à la
+				<%= link_to 'Creative Commons Attribution 2.5 License', 'http://creativecommons.org/licenses/by/2.5/', :class => 'external' %>.
+			</p>
+			
+		</div>

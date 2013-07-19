@@ -1,0 +1,7 @@
+<p>
+  <% sorted = specieslist.sort_by {|s| s[:name]} %>
+  <% sorted.each do |s| %>
+    <i><%= s[:name] %></i> (<%= s[:counter] %>)
+    <%= '•' unless sorted.last == s %>
+  <% end %>.
+</p>

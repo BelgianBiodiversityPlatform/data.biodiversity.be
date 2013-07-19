@@ -1,0 +1,16 @@
+User-agent: *
+Disallow: /en/ajax/show_specieslist
+Disallow: /fr/ajax/show_specieslist
+Disallow: /nl/ajax/show_specieslist
+Disallow: /en/ajax/show_occurrences
+Disallow: /fr/ajax/show_occurrences
+Disallow: /nl/ajax/show_occurrences
+Disallow: /en/ajax/export_occurrences
+Disallow: /fr/ajax/export_occurrences
+Disallow: /nl/ajax/export_occurrences
+Disallow: /en/pages/autocomplete_sn
+Disallow: /fr/pages/autocomplete_sn
+Disallow: /nl/pages/autocomplete_sn
+Disallow: /en/ajax/get_geodata
+Disallow: /fr/ajax/get_geodata
+Disallow: /nl/ajax/get_geodata

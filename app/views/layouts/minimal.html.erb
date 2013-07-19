@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <%= render :partial => '/layouts/title' %>
+    <%= stylesheet_link_tag_with_custom 'screen' %>
+    <%= stylesheet_link_tag @css_to_load if @css_to_load %>
+    
+    <%= render :partial => 'layouts/map_includes' if @load_openlayers %>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag @js_to_load if @js_to_load %>
+
+	<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+  </head>
+  <body <%= @inject_in_body_tag || ''%> >
+    <%= yield %>
+  </body>
+</html>
+

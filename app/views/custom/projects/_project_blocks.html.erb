@@ -1,0 +1,10 @@
+<% links = [] %>
+<% project_blocks.each do |p| %>
+  <% links << {:name => p[:title], :id => p[:html_id]} %>
+<% end %>
+
+<%= render :partial => 'shared/quick_links', :object => links %>
+
+<% project_blocks.each do |p| %>
+   <%= render :partial => 'pblock', :object => p %>
+<% end %>

@@ -1,0 +1,79 @@
+<h1 style="color: white;">CORINE land cover - 2000</h1>
+
+<div id="legend" style="text-align:left; font-size: 0.7em;">
+  <div id="col_1">
+    <h2>Artificial surfaces</h2>
+      <h3>Urban fabric</h3>
+	<%= legend_entry 'Continuous urban fabric', 'e60050' %>
+	<%= legend_entry 'Discontinuous urban fabric', 'ff0000' %>
+      <h3>Industrial, commercial and transport units</h3>
+	<%= legend_entry 'Industrial or commercial units', 'cc4df2' %>
+	<%= legend_entry 'Road and rail networks and associated land', 'cc0000' %>
+	<%= legend_entry 'Port areas', 'e6cccc' %>
+	<%= legend_entry 'Airports', 'e6cce6' %>
+      <h3>Mine, dump and construction sites</h3>
+	<%= legend_entry 'Mineral extraction sites', 'a600cc' %>
+	<%= legend_entry 'Dump sites', 'a67700' %>
+	<%= legend_entry 'Construction sites', 'ff4dff' %>
+      <h3>Artificial, non-agricultural vegetated areas</h3>
+	<%= legend_entry 'Green urban areas', 'ffa6ff' %>
+	<%= legend_entry 'Sport and leisure facilities', 'ffe6ff' %>
+    <h2>Agricultural areas</h2>
+      <h3>Arable land</h3>
+	<%= legend_entry 'Non-irrigated arable land', 'ffffa8' %>
+	<%= legend_entry 'Permanently irrigated land', 'ffff00' %>
+	<%= legend_entry 'Rice fields', 'e6e600' %>
+      <h3>Permanent crops</h3>
+	<%= legend_entry 'Vineyards', 'e68000' %>
+	<%= legend_entry 'Fruit trees and berry plantations', 'f2a54d' %>
+	<%= legend_entry 'Olive groves', 'e6a500' %>
+      <h3>Pastures</h3>
+	<%= legend_entry 'Pastures', 'e6e64c'%>
+      <h3>Heterogeneous agricultural areas</h3>
+	<%= legend_entry 'Annual crops associated with permanent crops', 'ffe6a6'%>
+	<%= legend_entry 'Complex cultivation patterns', 'ffe64d'%>
+	<%= legend_entry 'Land principally occupied by agriculture, with significant areas of natural vegetation', 'e6cc4d'%>
+	<%= legend_entry 'Agro-forestry areas', 'f2cca6'%>
+  </div>
+  <div id="col_2">
+    <h2>Forest and semi-natural areas</h2>
+      <h3>Forests</h3>   
+	<%= legend_entry 'Broad-leaved forest', '80ff00'%>
+	<%= legend_entry 'Coniferous forest', '00a600'%>
+	<%= legend_entry 'Mixed forest', '4dff00'%>
+      <h3>Scrub and/or herbaceous vegetation associations</h3>
+	<%= legend_entry 'Natural grasslands', 'ccf24d' %>
+	<%= legend_entry 'Moors and heatlands', 'a6ff80' %>
+	<%= legend_entry 'Sclerophyllous vegetation', 'a6e64d' %>
+	<%= legend_entry 'Transitional woodland-shrub', 'a6f200' %>
+      <h3>Open spaces with little or no vegetation</h3>
+	<%= legend_entry 'Beaches, dunes, sands', 'e6e6e6' %>
+	<%= legend_entry 'Bare rocks', 'cccccc' %>
+	<%= legend_entry 'Sparsely vegetated areas', 'ccffcc' %>
+	<%= legend_entry 'Burnt areas', '000000' %>
+	<%= legend_entry 'Glaciers and perpetual snow', 'a6e6cc' %>
+    <h2>Wetlands</h3>
+      <h3>Inland wetlands</h3>
+	<%= legend_entry 'Inland marshes', 'a6a6ff' %>
+	<%= legend_entry 'Peat bogs', '4d4dff' %>
+      <h3>Maritime wetlands</h3>
+	<%= legend_entry 'Salt marshes', 'ccccff' %>
+	<%= legend_entry 'Salines', 'e6e6ff' %>
+	<%= legend_entry 'Intertidal flats', 'a6a6e6'%>
+    <h2>Water bodies</h2>
+      <h3>Inland waters</h3>
+	<%= legend_entry 'Water courses', '00ccf2' %>
+	<%= legend_entry 'Water bodies', '80f2e6' %>
+    <h3>Marine waters</h3>
+	<%= legend_entry 'Coastal lagoons', '00ffa6' %>
+	<%= legend_entry 'Estuaries', 'a6ffe6' %>
+	<%= legend_entry 'Sea and ocean', 'e6f2ff' %>
+  </div>
+</div>
+
+<p style="text-align: center;"><%= button_to_function t('close_window'), 'window.close()'%> </p>
+
+<div id="corine_credits">
+	<%= render :partial => partial_name_localized('/custom/corine_credits') %>
+</div>
+

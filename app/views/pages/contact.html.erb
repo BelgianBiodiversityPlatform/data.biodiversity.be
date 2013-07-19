@@ -1,0 +1,59 @@
+<% @page_title = t('page_titles.contact') %>
+<% @css_to_load = 'contact' %>
+
+<h1 id="contact_us"><%= t 'contact.contact_us' %></h1>
+<p style="margin-top: 22px;">
+<p><%= t 'contact.we_re_constantly' %></p>
+<p><%= t 'contact.so_please' %></p>
+
+
+<div id="contact_container">
+	
+<div class="flash_info">
+  <%= t 'contact.all_fields_are' %>
+</div>
+
+<% form_tag do -%>
+  <fieldset>
+    <legend><%= t 'contact.about_you' %></legend>
+    <ol>
+      <li>
+        <%= label_tag :sender_name, t('contact.your_name') %>
+        <%= text_field_tag :sender_name, params[:sender_name] %>
+      </li>
+      <li>
+        <%= label_tag :sender_address, t('contact.your_email') %>
+        <%= text_field_tag :sender_address, params[:sender_address] %>
+      </li>
+    </ol>
+  </fieldset>
+
+  <fieldset>
+    <legend><%= t 'contact.your_message' %></legend>
+    <ol>
+      <li>
+        <%= label_tag :message_title, t('contact.title') %>
+        <%= text_field_tag :message_title, params[:message_title] %>
+      </li>
+      <li>
+        <%= label_tag :message_content, t('contact.content') %>
+        <%= text_area_tag :message_content, params[:message_content], :size => '70x10' %>
+      </li>
+    </ol>
+  </fieldset>
+    
+  <fieldset>
+    <legend>Spam</legend>
+    <ol>
+      <li>
+        <% spam_label = t('contact.to_avoid_spam1') + '<span class="spamcode">' + @spamcode.to_s + '</span>' +t('contact.to_avoid_spam2')%>
+        <%= label_tag :spamcode, spam_label, :style => "float: none;" %>
+        <%= text_field_tag :spamcode, params[:spamcode], :size => 3 %>
+      </li>
+    </ol>
+  </fieldset>
+
+  <fieldset class="submit"><%= submit_tag t('contact.send_message') %></fieldset>
+<% end %>
+
+</div>

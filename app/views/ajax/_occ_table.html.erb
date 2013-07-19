@@ -1,0 +1,117 @@
+<div class="complete_rt">
+  <div class="paginator">
+
+    <% if  occ_table.first_page? %>
+      <%= image_tag 'pagination/first.png', :alt => 'first', :class => 'disabled' %>
+      <%= image_tag 'pagination/prev.png', :alt => 'previous', :class => 'disabled' %>
+    <% else %>
+      <%= link_to_function(image_tag('pagination/first.png', :alt => 'first'), "jumpToPage(Cdp.search, 1)", :class => 'nohover') %>
+      <%= link_to_function(image_tag('pagination/prev.png', :alt => 'previous'), "jumpToPage(Cdp.search, #{occ_table.page_num-1})", :class => 'nohover') %>
+    <% end  %>
+
+    Page : <%= occ_table.page_num %> / <%= occ_table.total_pages %>
+    (<%= t 'rt.results' %> <%= (occ_table.first_on_page + 1) %>-<%= (occ_table.last_on_page + 1) %>), <%= t 'rt.total' %>  : <%= occ_table.total_results %>
+
+    <% if  occ_table.last_page? %>
+      <%= image_tag 'pagination/next.png', :alt => 'next', :class => 'disabled' %>
+      <%= image_tag 'pagination/last.png', :alt => 'last', :class => 'disabled' %>
+    <% else %>
+      <%= link_to_function(image_tag('pagination/next.png', :alt => 'next'), "jumpToPage(Cdp.search, #{occ_table.page_num+1})", :class => 'nohover') %>
+      <%= link_to_function(image_tag('pagination/last.png', :alt => 'last'), "jumpToPage(Cdp.search, #{occ_table.last_page_num})", :class => 'nohover') %>
+    <% end %>
+  </div>
+
+  <table id="rt">
+    <tr>
+      <th style="padding-left: 5px">
+        &nbsp;
+      </th>
+
+      <th>
+        <%= rt_sortable_header :name => t('rt.gbif_key'), :db_field => 'occurrences.key', :html_id => 'key_th_link' %>
+      </th>
+
+      <th>
+        <%= rt_sortable_header :name => t('rt.scientific_name'), :db_field => 'occurrences.scientific_name', :html_id => 'sn_th_link' %>
+      </th>
+
+      <th>
+        <%= rt_sortable_header :name => t('rt.locality'), :db_field => 'occurrences.locality', :html_id => 'locality_th_link' %>
+      </th>
+
+      <th>
+        <%= rt_sortable_header :name => t('rt.resource'), :db_field => 'resources.name', :html_id => 'resource_th_link' %>
+      </th>
+
+      <th style="text-align: center">
+        <%= rt_sortable_header :name => t('rt.georef'), :db_field => 'occurrences.coordinates', :html_id => 'georef_th_link' %>
+      </th>
+    </tr>
+    <% occ_table.occurrences.each do |occ| -%>
+      <tr>
+        <td style="padding-left: 5px">
+          <%  window_size = occ.georef? ? 830 : 540 %>
+          <%= link_to_function(
+            image_tag('info.png', :alt =>'details picture', :size=>'16x16', :class => 'transp'),
+            "occurrenceDetails(#{occ.id},#{window_size})",
+            :class =>'nohover')%>
+        </td>
+
+        <td><%= link_to_gbif_occurrence occ.key, occ.key, :target => '_blank' %></td>
+        <td class="scientific_name"><%= occ.scientific_name %></td>
+        <td><%= occ.locality %></td>
+
+        <td id="rn_<%= occ.id %>">
+          <% if occ.resource -%>
+    <%# Resource name... %>
+            <%= occ.resource.name %>
+    <%# ... and tooltip %>
+            <div id="tt_<%= occ.id %>" style="display: none;" class="tooltiptable">
+              <p><b>Resource : </b><%= occ.resource.name %></p>
+              <p><b>Provider : </b><%= occ.provider.name %></p>
+              <p><b>Country : </b><%= occ.country ? occ.country.name : '-' %></p>
+            </div>
+    <%# connect them ! -%>
+            <script type="text/javascript">
+              var my_tooltip_<%= occ.id %> = new Tooltip('rn_<%= occ.id %>', 'tt_<%= occ.id %>')
+            </script>
+
+          <% else -%>
+            -
+          <% end -%>
+        </td>
+
+        <td style="text-align: center">
+          <% yes_image = image_tag('tick.png', :alt => 'show on map', :class => 'transp') %>
+          <% if clickable_georef %>
+            <% yes_output = link_to_function(yes_image, "showPointOnMap(#{occ.latitude},#{occ.longitude},#{occ.coordinate_precision || '0'}, true)", :class => 'nohover' ) %>
+          <% else %>
+            <% yes_output = yes_image %>
+          <% end %>
+          <%= occ.georef? ? yes_output : image_tag('cross.png', :alt => 'no') %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="exports">
+  
+    <%= t 'rt.exports.export_these' %>&nbsp;<%= link_to t('rt.exports.spreadsheet'), '', :id => 'export_link_csv' %>.
+    <script type="text/javascript">$('export_link_csv').href = urlForExport('csv');</script>
+  
+    <%= t 'rt.exports.in_these' %> <%= occ_table.total_results %> <%= t 'rt.exports.results'%>,
+    <%= occ_table.total_georef_results %> <%= t 'rt.exports.are_georeferenced' %>.
+
+    <% if occ_table.total_georef_results > 0 %>
+      
+	    <%= t 'rt.exports.export_them_for' %>
+	    <%= link_to ' Google Earth (KML)', '', :id => 'export_link_kml' %>&nbsp;
+	    <script type="text/javascript">$('export_link_kml').href = urlForExport('kml');</script>
+
+	    <% if clickable_georef and occ_table.total_georef_results <= MAXIMUM_RESULTS_FOR_SHOWONMAP %>
+	      • <%= link_to_function t('rt.exports.show_them'), 'showResultsOnMap(Cdp.search)' %>
+	    <% end %>.
+    <% end %>
+
+</div>

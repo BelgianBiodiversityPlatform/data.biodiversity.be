@@ -1,0 +1,115 @@
+<% @page_title = t 'cus.page_titles.digit_2009' %>
+
+<% projects = [
+  {
+    :html_id => 'beetles',
+    :name =>  'Saproxylic and Xylobiont Beetles',
+    :promotors => link_to('Dr Patrick Grootaert', 'http://biobel.biodiversity.be/person/show/1062', :class => 'external') + ' (Royal Belgian Institute of Natural Sciences)',
+    :abstract => '<p>
+                        Saproxylic beetles form an important part of forest biodiversity.
+                        Many species are very rare in Belgian forests.
+                      </p>
+
+                      <p>
+                        On the other hand, some other species can cause serious economic losses.
+                      </p>
+
+                      <p>
+                        In Belgium, there are no recent and complete catalogues
+                        or distribution atlases for most of the saproxylic beetle families.
+                      </p>
+
+                      <p>
+                        A large amount of information on these species and their
+                        distribution in Belgium is available under the form of
+                        pinned and labeled specimens in the collections of the
+                        Royal Belgian Institute of Natural Sciences (RBINS),
+                        Department of Entomology.
+                      </p>
+
+                      <p>
+                        Part of this information has already been digitized by
+                        RBINS staff and visiting researchers for the families
+                        Lucanidae, Cetoniidae and Cerambycidae for the Flemish region.
+                      </p>
+
+                      <p>
+                        In the proposed project, all records of the selected important
+                        families will be completely digitized for the whole
+                        country. Upon completion of these families other xylobiont families
+                        such as Buprestidae, Elateridae (pars), Scolytidae and Cleridae will
+                        be digitized on a one by one family basis.
+                      </p>'
+  },
+  {
+    :html_id => 'ifbl',
+    :name => 'digitisation of IFBL flora checklists for Belgium (1939-1971)',
+    :promotors => link_to('Dr. Leo Vanhecke', 'http://biobel.biodiversity.be/person/show/1013', :class => 'external') + ' (Meise, National Botanic Garden of Belgium)',
+    :abstract => 
+       'The project aims at digitising a substantial part of the IFBL 1 km² flora checklists sampled
+    between 1939 and 1971. About 2000 original lists (1/5 of the approx. 10 000 available lists)
+    corresponding with some 200 000 data representative of the former distribution of vascular
+    plant species in Belgium, will be digitised after a selection procedure based on the quality of
+    the individual lists and on maximising the spatial dispersion of the data throughout Belgium.
+    The digitised data will be placed on a website, at the disposal of scientists, policy makers, and
+    any other interested people. They will be integrated in existing national and regional flora
+    databases and will contribute to the realisation of the regional Flora Atlases. The digitised
+    data will help us in developing a methodology for designing cost- and time-efficient
+    systematic field inventory within the frame of future monitoring and mapping of the flora.'      
+    },
+
+    {
+    :html_id => 'dipol2',
+    :name => 'digitisation of Pollinators preserved in Belgian collections, Part 2: Bombus of Belgium',  
+    :promotors => link_to('Prof. Dr P. Rasmont', 'http://biobel.biodiversity.be/person/show/11', :class => 'external') + ' (Université de Mons-Hainaut)',
+    :abstract => '<p>
+    The wild bees (in superfamily Apoidea), with an estimated more than 20,000 species world-wide, play
+    a profound role in the economy of nature; as the dominant pollinators of flowering plants, they are
+    critically important in structuring ecosystems and have a major impact on agriculture. The dependence
+    of ecosystems on flowering plants and their wild bee pollinators calls for the development of better
+    distributional and biological databases during this period of biodiversity crises. For example, the value
+    of pollination services provided by wild and domestic bees in the United States each year exceeds the
+    market price of all honey produced by 4-5 times (Buchmann and Nabhan 1996) (Report of the
+    International Workshop on the Conservation and Sustainable Use of Pollinators in Agriculture, Sao
+    Paulo, Brazil, 7-9 October 1998). Owing to the overwhelming importance of wild bees it is imperative
+    to develop a synthetic understanding of factors influencing their distribution and abundance, floral
+    associations, as well as more basic biological attributes. Currently there is only one comprehensive
+    Belgian database that makes accessible the wealth of data in natural history museums about the
+    diversity, distribution and biology of wild bees: the Data Bank of Gembloux and Mons. This data bank
+    is continuously under development and related to excellent bee collections. But its development is
+    nowadays restricted to some taxa on which are presently working the staff of the University of Mons-
+    Hainaut and of the University of Gembloux. A great number of other bee taxa are identified but still
+    remain to be digitized. If such a data bank can be further enhanced with additional data, expanded to
+    include data from other institutions, and linked for seamless access using modern information
+    technology, the utility of each individual database for research, education, conservation, and resource
+    management will be vastly increased.
+  </p>
+  <p>
+    While the usefulness of specimen databasing is true for all taxa, there are immense additional benefits
+    that will come from the databasing of bees. This group of organisms is of prime importance for two
+    reasons. First they provide most of the world’s pollination ecosystem services in both agricultural and
+    “natural” settings, often having distinct ecological associations with specific host plants. Secondly, both
+    recently documented declines and extinctions and theoretical and simulation research indicate that
+    bees are far more prone to extinction than are most organisms. Thus the bee database will provide
+    crucial information for agriculturalists and conservation biologists (among others).
+  </p>
+  <p>
+    In a first step, we have digitized all the available data for the Apoidea Halictidae. The whole family
+    counts 44784 data. These data are presently managed by the Banque de Donnees fauniques de
+    Gembloux et Mons. They are on line at the web site "Atlas Hymenoptera".
+  </p>
+  <p>
+    Now, we choose to work with Apidae sensu stricto (Bumblebees, Bombus). They constitute very likely
+    the biggest pollinator collection available for Belgium. A big part is constituted by the huge collection
+    in the IRSNB-KBIN, while another important source is the Gembloux and Mons material
+  </p>'
+    
+  }
+
+
+] %>
+
+
+<h1><%= t 'cus.projects.dc_2009' %></h1>
+<h3><%= t 'cus.projects.three_2009' %></h3>
+<%= render(:partial => 'digitxxx', :locals => {:projects => projects}) %>

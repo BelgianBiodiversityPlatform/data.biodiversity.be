@@ -1,0 +1,38 @@
+CountryDataPortal manual
+Belgian Biodiversity Platform - niconoe@ulb.ac.be
+rev. %%date
+%! Target	: xhtml
+%! Encoding	: utf8
+= Introduction =
+CountryDataPortal is a web application that can be used to show GBIF data occuring in a specific country.
+It's composed of :
+- A [ Ruby On Rails www.rubyonrails.org] web application used to show data and some static web pages (presentation of GBIF national node for example) to visitors. It will sometimes be called "the engine" in this documentation.
+- Some scripts used to extract data pertaining to a country from the GBIF network and to load or update the local database used by the engine.
+- You will have to create a specific configuration folder containing images, texts and configurations directives needed to transform the engine in a dedicated website.
+
+
+So, the process of creating your national data portal with this software will consist of :
+- Download the Country Data Portal engine.
+- Create a configuration folder with your images, texts, CSS files, ...
+- Run a simple command to 'apply' the configuration folder to the engine.
+- Run a script to extract data from the GBIF network and load into a local PostgreSQL database.
+- Deploy you application to a webserver.
+
+
+The rest of this documentation will cover these steps in details.
+
+== Requirements ==
+
+- A web server that supports Ruby On Rails application (Apache with mod_rails/passenger is probably the safest choice).
+- A postgreSQL database server to store engine data.
+- Basic web development knowledge. Some Ruby On Rails knowledge can probably be useful.
+
+
+== History (or - why can't I configure that and that ? I NEED this option!) ==
+
+CountryDataPortal was first created during 2009 as a specific data portal for the [Belgian GBIF node www.biodiversity.be]. When it appeared that this initiative could be useful for other GBIF nodes, we decided to make it customizable by splitting it in two parts (a common engine and a specific 'Belgium' configuration folder) and to release it under an Open Source license. You can see it working on the [Belgian Data Portal http://data.biodiversity.be].
+
+Please note that because of its past as a dedicated website for Belgium, it was not created from the ground-up as a CMS. In other words, some stuff you may want to customize resides for the moment in the "engine" part instead of the "configuration" part. As this "configuration extraction" stuff can be useful to other users, the best way to do it is :
+
+- If you have Ruby On Rails knowledge, you can do it and then submit a patch for inclusion.
+- If you don't have time / competence to do it, you can still fill a ticket and hope someone else will do it for you.

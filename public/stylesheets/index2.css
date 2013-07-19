@@ -1,0 +1,137 @@
+div#map_toolbar {
+	top: 0;
+	float: none;;
+	width: 560px;
+}
+
+div#container div#middle div#page p#search_intro {
+	margin-top: 0;
+	margin-bottom: 40px;
+	font-style: italic;
+	font-size: 0.85em;
+}
+
+div#container div#middle div#page p.searchtitle {
+   font-weight: bold;
+   margin: 10px 0;
+}
+
+div#overlay_links {
+    margin-top: 5px;
+}
+
+div#container div#middle div#page div#overlay_links p {
+	margin: 0;
+}
+
+
+
+div#overlay_links a.activate {
+    background-image:url(../images/star.png);
+    background-position:left;
+    background-repeat:no-repeat;
+    padding-left:20px;
+}
+
+
+div#columns {
+    overflow: hidden;
+}
+
+div#quicksearch {
+    float: right;
+	width: 60%;
+/*	z-index: 2000; /* for IE */
+}
+
+div#quicksearch h1 {
+	margin: 30px 0 0 0;
+/*	font-size: 2.3em;*/
+}
+
+div#blabla {
+    width: 33%;
+	float: left;
+    }
+
+div#blabla h1 {
+	font-size: 2em;
+}
+
+div#welcome {
+    background-color: #eaf4fe;
+    border:1px solid #C0C0C0;
+    text-align:justify;
+    margin-bottom: 10px;
+    padding: 10px;
+	font-size: 0.85em;
+}
+
+div#stats {    
+    background-color: #ffe285;
+    border:1px solid #ffcb21;
+    text-align:center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#stats p {
+    margin-top: 3px;
+}
+
+div#container div#middle div#page div#stats h2 {
+	border: 0;
+	margin: 20px;
+}
+
+div#container div#middle div#page div#stats p {
+	margin: 5px;
+}
+
+div.roundedbox {
+	padding: 6px;  
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    color: #222;
+}
+
+div.roundedbox h1, h2, h3, h4{
+    margin-top: 0;
+    text-align: center;
+}
+
+
+div#autocomplete_choices {
+    background-color: #f5f5f5;
+    z-index: 2000;
+    max-height:250px;
+    overflow:auto;
+}
+
+div#autocomplete_choices ul li.selected { background-color: #ffb;}
+
+div#logos {
+    height: 70px;
+/*    margin: 20px 0px;*/
+    text-align: center;
+}
+
+div#logos a {
+    margin: 30px 20px;
+}
+
+div#logos a:hover{
+    background-color: transparent;
+    border-bottom: 2px solid #004C4C;
+}
+
+/* Correct positioning for Google copyrights in OL */
+.olLayerGoogleCopyright {
+    right: 3px;
+    bottom: 2px;
+}
+.olLayerGooglePoweredBy {
+    left: 2px;
+    bottom: 2px;
+}

@@ -1,0 +1,18 @@
+!!! What about the session secret key ?
+put example configuration folder somewhere
+
+1) Create a config folder, for example in /home/nnoe/mauritania_cdp
+This file must contains :
+
+- A cdp.rb main configuration file (see example for directives)
+- A screen_custom.css (see example)
+- An 'images' folder that contains all specific images to this customization.
+  It will we merged in the public/images/folder of the application.
+  Needed files : bottom.png (to be used at the bottom of the page, should be 900x161px.
+- A view folder that will be merged in app views.
+  Needed files : views/layouts/custom/_footertext.{en|fr|nl}.html.erb (1 per activated language) => footer text
+
+
+
+2) Run a rake task to write customizations to app
+rake utils:load_customization config_folder_path='/home/nnoe/mauritania_cdp'

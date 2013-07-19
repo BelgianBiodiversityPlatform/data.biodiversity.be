@@ -1,0 +1,9 @@
+<title>
+  <%= APP_NAME %>
+
+  <%# For projects, we add a prefix to each page title %>
+  <%# This prefix is set with a before_filter in controller %>
+  <%= @controller_title_prefix ? "- #{@controller_title_prefix}" : '' %>
+
+  <%= @page_title ? " - #{@page_title}" : '' %>
+</title>

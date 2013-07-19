@@ -1,0 +1,12 @@
+<% if OVERLAYS.size > 0 %>
+<div id="overlay_links">
+	<% OVERLAYS.each do |o| %>
+	<p>
+		<%= link_to_function(t('index.show') + ' ' + o[:name][I18n.locale.to_s], "showlayer('#{o[:name][I18n.locale.to_s]}')", :class => 'activate' ) %>
+		<% if o.has_key? :legend %>
+		<%= link_to('[' + t('index.legend') + ']', {:controller => 'custom', :action =>o[:legend][:url][:action]}, :popup => ['new_window_name', o[:legend][:js_params]]) %>
+		<% end %>
+	</p>
+	<% end %>
+</div>
+<% end %>

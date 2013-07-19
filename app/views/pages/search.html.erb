@@ -1,0 +1,74 @@
+<% @page_title = t('page_titles.search') %>
+<% @css_to_load = 'search' %>
+<% @js_to_load = 'search' %>
+
+<h1>
+<%# Same title as on index page %>
+  <%= render :partial => partial_name_localized('/custom/pages/index_h1_content') %>
+</h1>
+
+<div id="filter_boxes">
+  <div id="datasource">
+    <h1><%= t 'search.data_sources' %></h1>
+    <%= label_tag 'occ_providercountry_id', t('search.providercountry') %>
+    <%= select_for_datasource('occ_providercountry_id', Country.for_search_select.sort_by{|p| p.name}, 'ALL') %>
+    <%= ajax_spinner('occ_providercountry_id_spinner') %>
+	<br/>
+
+    <%= label_tag 'occ_provider_id', t('search.dataprovider') %>
+    <%= select_for_datasource('occ_provider_id', Provider.for_search_select.sort_by{|p| p.name}, 'ALL') %>
+    <%= ajax_spinner('occ_provider_id_spinner') %>
+	<br/>
+
+    <%= label_tag 'occ_resource_id', t('search.resource') %>
+    <%= select_for_datasource('occ_resource_id', Resource.for_search_select.sort_by{|p| p.name}, 'ALL') %>
+    <%= ajax_spinner('occ_resource_id_spinner') %>
+	<br/>
+  </div>
+
+  <div id="name">
+    <h1><%= t('search.scientific_name')%> </h1>
+    <%= label_tag :sn, t('search.sn_contains'), :style => 'width: 25em;' %>
+    <%= text_field_tag :sn, nil, :size => 20 %>
+  </div>
+
+  <div id="collect">
+    <h1><%= t('search.co_obs') %></h1>
+
+    <h2><%= t('search.co_obs_date') %></h2>
+    <div class="filter_subsection">
+      <%= label_tag :collec_date_after, t('search.after') %>
+      <%= text_field_tag :collec_date_after %>
+      <%= label_tag :collec_date_before, t('search.before') %>
+      <%= text_field_tag :collec_date_before %>
+      <p class="formathelp"><%= t('search.yyyymmdd')%></p>
+    </div>
+
+    <h2><%= t('search.co_obs_place') %></h2>
+    <div class="filter_subsection">
+      <%= label_tag :locality, t('search.locality_contains'), :style => 'width: 25em;' %>
+      <%= text_field_tag :locality, nil, :size => 20 %>
+
+      <h3><%= t('search.latitude') %></h3>
+      <%= label_tag :minimum_lat, t('search.min') %>
+      <%= text_field_tag :minimum_lat, nil, :class => 'small_search_field' %>
+      <%= label_tag :maximum_lat, t('search.max') %>
+      <%= text_field_tag :maximum_lat, nil, :class => 'small_search_field' %>
+      <h3><%= t('search.longitude') %></h3>
+      <%= label_tag :minimum_lon, t('search.min') %>
+      <%= text_field_tag :minimum_lon, nil, :class => 'small_search_field' %>
+      <%= label_tag :maximum_lon, t('search.max') %>
+      <%= text_field_tag :maximum_lon, nil, :class => 'small_search_field' %>
+      <p class="formathelp"><%= t('search.example')%></p>
+    </div>
+  </div>
+</div>
+
+<p style="clear: both; text-align: center">
+  <%= link_to_function t('index.search'), 'start_search()', :class => 'cupid-green' %>
+</p>
+
+<h2 id="results"><%= t 'search.results' %></h2>
+<div id="search_results">
+  <p id="pre_search"><%= t('search.please_select')%></p>
+</div>

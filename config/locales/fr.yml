@@ -1,0 +1,126 @@
+fr:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e %B %Y"
+      long_ordinal: "%e %B %Y"
+      only_day: "%e"
+
+    day_names: [dimanche, lundi, mardi, mercredi, jeudi, vendredi, samedi]
+    abbr_day_names: [dim, lun, mar, mer, jeu, ven, sam]
+    month_names: [~, janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
+    abbr_month_names: [~, jan., fév., mar., avr., mai, juin, juil., août, sept., oct., nov., déc.]
+    order: [ :day, :month, :year ]
+
+  page_titles:
+    home: Accueil
+    contact: Contactez nous
+    occurrence_details: "Détails d'une occurrence"
+    search: Recherche
+    projects_prefix: Projets
+
+  menu:
+    home: Accueil
+    search: Recherche
+    projects: Projets
+    about: A propos
+    contact_us: Contactez nous
+
+  rt:
+    exports:
+      export_these: Exporter ces résultats pour un
+      spreadsheet: tableur (CSV)
+      in_these: Parmis ces
+      results: résultats
+      are_georeferenced: sont géo-référencés
+      export_them_for: Exporter pour
+      show_them: Afficher sur la carte
+      
+    occurrences_table: Afficher comme tableau d'occurrences
+    species_list: Afficher comme liste d'espèces
+    results: résultats
+    total: total
+    gbif_key: Clé GBIF
+    scientific_name: Nom scientifique
+    locality: Lieu
+    resource: Ressource
+    georef: Geo-référencé
+    sorry_no_results: Désolé, aucune occurrence ne correspond aux critères spécifiés.
+
+  quick_links: "Liens express :"
+  back_to_top: Retour en haut
+  close_window: fermer
+  
+  index:
+    by_scientific_name: "Par nom d'espèce :"
+    by_geographic_zone: "Par zone géographique :"
+    show: Montrer
+    search: Chercher
+    enter_a_scientific: "Entrez un nom d'espèce ou sélectionnez une zone géographique pour obtenir les données correspondantes."
+    statistics: Statistiques
+    occurrences_in: occurrences en
+    georeferenced_occurrences: occurrences géoréférencées
+    last_data_update: "Dernière mise à jour des données :"
+    browser_warning: "Ce site nécessite un naviguateur moderne (Firefox 4+, Explorer 8+, Safari 4+, Google Chrome, ...) avec la prise en charge de JavaScript activée."
+    legend: légende
+
+  search:
+    filters: Filtres
+    data_sources: Par source
+    providercountry: "Pays du fournisseur :"
+    dataprovider: "Fournisseur de données :"
+    resource: "Ressource : "
+    scientific_name: Par nom d'espèce
+    sn_contains: "Dont le nom scientifique contient :"
+    locality_contains: "Dont la localité contient :"
+    go: Chercher
+    co_obs: Collecté / Observé
+    co_obs_date: Date
+    co_obs_place: Lieu
+    before: 'Avant : '
+    after: 'Après : '
+    yyyymmdd: (AAAA-MM-JJ)
+    results: Resultats
+    please_select: Selectionner un ou plusieurs critères, puis cliquer sur « Chercher ».
+    latitude: Latitude
+    longitude: Longitude
+    min: Min.
+    max: Max.
+    example: 'Example : lat 50.455 - lon 5.105'
+
+  contact:
+    contact_us: Contactez nous
+    we_re_constantly: Nous travaillons sans cesse à l'amélioration des fonctionalités de ce portail, ainsi que la quantité et la qualité des données fournies. Pour réaliser ceci, nous avons besoin de vos suggestions et commentaires. N'hésitez pas à nous faire également connaitre les raisons de votre visite sur ce site et quelles sont les données qui auront été utiles à votre travail.
+    so_please: N'hésitez donc pas à nous contacter pour toute question ou remarque.
+    all_fields_are: Tous les champs sont obligatoires.
+    about_you: A votre sujet
+    your_name: "Votre nom :"
+    your_email: "Votre addresse e-mail :"
+    your_message: Votre message
+    title: "Titre :"
+    content: "Contenu :"
+    to_avoid_spam1: "Afin d'éviter le SPAM, veuillez taper "
+    to_avoid_spam2: "  dans le champ suivant : "
+    send_message: Envoyer
+    msg_ok: Merci pour votre message.
+    msg_error: Erreur. Chaque champ est-il correctement rempli ?
+
+  occurrence:
+    scientific_name: "Nom scientifique :"
+    status: "Status :"
+    gbif_key: "Clé GBIF :"
+    bor: "Basis of record :"
+    resource: "Ressource :"
+    provider: "Fournisseur de données : "
+    country: "Pays du fournisseur : "
+    collection_date: "Date de l'observation / de la collecte :"
+    collection_code: "Code de collection :"
+    institution_code: "Code de l'institution :"
+    catalog_number: "Numéro de catalogue :"
+    last_indexation: "Dernière indexation :"
+    locality: "Lieu :"
+    latitude: "Latitude :"
+    longitude: "Longitude :"
+    precision: "Précision des coordonées :"
+    not_georef: "Cette occurrence n'est pas géoréférencée."

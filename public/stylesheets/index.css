@@ -1,0 +1,102 @@
+p.searchtitle {
+   font-weight: bold;
+}
+
+div#overlay_links {
+    margin-top: 5px;
+}
+
+div#overlay_links a.activate {
+    background-image:url(../images/star.png);
+    background-position:left;
+    background-repeat:no-repeat;
+    padding-left:20px;
+}
+
+div#map {
+    border: 1px solid #4ab4b4;
+}
+
+div#columns {
+    overflow: hidden;
+}
+
+div#quicksearch {
+    float: left;
+    width: 450px;
+	height: 100px;
+}
+
+div#blabla {
+    margin-left: 468px;
+    margin-top: 10px;
+    }
+
+div#welcome {
+    min-height: 320px;
+    background-color: #F0F0F0;
+    border:1px solid #C0C0C0;
+    text-align:center;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+div#stats {    
+    background-color: #ffe285;
+    border:1px solid #ffcb21;
+    text-align:center;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#stats p {
+    margin-top: 3px;
+}
+
+div.roundedbox {
+	padding: 6px;  
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    color: #222;
+}
+
+div.roundedbox h1, h2, h3, h4{
+    margin-top: 0;
+    text-align: center;
+}
+
+
+div#autocomplete_choices {
+    background-color: #f5f5f5;
+    z-index: 1000;
+    max-height:250px;
+    overflow:auto;
+}
+
+div#autocomplete_choices ul li.selected { background-color: #ffb;}
+
+div#logos {
+    height: 70px;
+/*    margin: 20px 0px;*/
+    text-align: center;
+}
+
+div#logos a {
+    margin: 30px 30px;
+}
+
+div#logos a:hover{
+    background-color: transparent;
+    border-bottom: 2px solid #004C4C;
+}
+
+/* Correct positioning for Google copyrights in OL */
+.olLayerGoogleCopyright {
+    right: 3px;
+    bottom: 2px;
+}
+.olLayerGooglePoweredBy {
+    left: 2px;
+    bottom: 2px;
+}

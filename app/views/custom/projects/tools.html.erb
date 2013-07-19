@@ -1,0 +1,135 @@
+<% @page_title = t 'cus.page_titles.tools' %>
+
+<h1><%= t('cus.projects.cleaning_tools')  %></h1>
+<p><%= t('cus.projects.bdc_ic')%> </p>
+<p><%= t('cus.projects.you_will_find')%></p>
+
+<% tools = [
+    {
+      :html_id => 'biogeomancer',
+      :title => 'Biogeomancer Workbench',
+      :text =>  {
+                  'en' => '<p>' + link_to('Biogeomancer', 'http://biogeomancer.org/', :class => 'external')+
+                          ' is a worldwide collaboration of natural history and geospatial data experts.
+                          The primary goal of this project is to maximize the quality and quantity of
+                          biodiversity data that can be mapped in support of scientific research, planning,
+                          conservation and management.' +
+                          link_to('Biogeomancer Workbench', 'http://bg.berkeley.edu/latest/', :class => 'external') + 
+                          ' is one of the tools provided by this project.</p>',
+                  'fr' => '<p>' + link_to('Biogeomancer', 'http://biogeomancer.org/', :class => 'external')+
+                          ' est un projet à l\'échelle mondiale  qui vise à fédérer les experts en
+                          histoire naturelle et en données géospatiales.
+                          Le but premier est de maximiser la qualité et la quantité des données de
+                          biodiversité qui peuvent être présentées sous forme de cartes géographiques au bénéfice de
+                          la recherche scientifique, de la conservation et de la gestion. ' +
+                          link_to('Biogeomancer Workbench', 'http://bg.berkeley.edu/latest/', :class => 'external') +
+                          ' est un des outils proposé par ce consortium.</p>'
+                }
+    },
+    {
+      :html_id => 'cria',
+      :title => 'CRIA Species Link',
+      :text =>  {
+                  'en' => '<p>' + link_to('CRIA Species Link', 'http://splink.cria.org.br/dc/index?setlang=en', :class => 'external') +
+                          ' is a data cleaning tool. Its aim is to help curators to identify possible errors.
+                          The system presents "suspect" records and recommend the author or curator to check
+                          them. This site is available in English and Portuguese.</p>',
+                  'fr' => '<p>' + link_to('CRIA Species Link', 'http://splink.cria.org.br/dc/index?setlang=en', :class => 'external') +
+                          ' est un outil de nettoyage des données. Son but est d\'aider les conservateurs à identifier les erreurs possibles.
+                          Le système présente les enregistrements "suspects" et suggère à l\'auteur ou au conservateur des données de les
+                          passer en revue. Ce site est disponible en anglais et en portugais.</p>'
+                }
+    },
+    {
+      :html_id => 'divagis',
+      :title => 'DIVA-GIS',
+      :text =>  {
+                  'en' => '<p>' + link_to('DIVA-GIS', 'http://diva-gis.org', :class => 'external')+
+                          ' is a free, mapping and geographical analysis tool that can be used for many different purposes.
+                           It is particulary useful for mapping and analysing biodiversity data, such as the
+                           distribution of species.</p>',
+                  'fr' => '<p>' + link_to('DIVA-GIS', 'http://diva-gis.org', :class => 'external')+
+                          ' est un logiciel gratuit et polyvalent dédié à la cartographie.
+                           Il est particulièrement utile pour la création de cartes et à l\'analyse des données dans le domaine
+                           de la biodiversité, par exemple la distribution des espèces.</p>'
+                }
+    },
+    {
+      :html_id => 'ipt',
+      :title => 'GBIF Integrated Publishing Toolkit',
+      :text =>  {
+                  'en' => '<p>The GBIF Secretariat developed the ' +
+                      link_to('Integrated Publishing Toolkit', 'http://code.google.com/p/gbif-providertoolkit/', :class => 'external') +
+                      ' (IPT) as a software platform to facilitate the efficient publishing of biodiversity
+                      data on the Internet, using the GBIF network.</p><p>This Java-based tool manages three types of data: taxon primary occurrence data,
+                      taxonomic checklists and resource metadata. Through the IPT, users will be able
+                      to publish data residing on local databases, upload existing files in comma-separated
+                      and tab-delimited form, and access central services to make use of standardised
+                      controlled vocabularies and data quality reporting services.</p>',
+                  'fr' => '<p>Le secrétariat du GBIF a développé ' + link_to('Integrated Publishing Toolkit', 'http://code.google.com/p/gbif-providertoolkit/', :class => 'external') + '
+                           (IPT), une plate-forme logicielle visant à simplifier la publication des données de biodiversité sur
+                          Internet via le réseau du GBIF.</p><p>Cet outil développé en Java permet de gérer 3 types de données :
+                          les données primaires de biodiversité (occurrences), les checklists (taxonomiques) et les métadonnées. Via
+                          IPT, les utilisateurs pourront publier des données provenant bases de données locales ou de fichiers CSV
+                          (texte séparé par des virgules) et accéder à des services centraux pour des fonctionnalités telles que l\'
+                          usage de vocabulaires controllés et l\'analyse de la qualité de ces données.
+                          '
+                }
+    },
+    {
+      :html_id => 'manisnet',
+      :title => 'Manisnet',
+      :text =>  {
+                  'en' => '<p>' + link_to('Manisnet Georeferencing Calculator ', 'http://manisnet.org/gci2.html', :class => 'external')+
+                          ' is a tool that aid in the georeferencing of descriptive localities such as those
+                          found in museum-based natural history collections. This tool was written by John
+                          Wieczorek and is now available in English, French, Portuguese and Spanish.</p>',
+                  'fr' => '<p>' + link_to('Manisnet Georeferencing Calculator ', 'http://manisnet.org/gci2.html', :class => 'external')+
+                          ' est un outil d\'aide au géoréférencement de lieux "détaillés", tel que pratiqué pour les collections
+                          d\'histoire naturelle. Cet outil a été écrit par John Wieczorek et est disponible en anglais, français, portuguais et espagnol.</p>'
+                }
+    },
+    {
+      :html_id => 'darwintest',
+      :title => 'Darwin Test',
+      :text => {
+                  'en' => '<p>' +
+                            link_to('Darwin test', 'http://www.gbif.es/darwin_test/Darwin_Test_in.php', :class => 'external') +
+                            ' is an application to validate and check
+                            records from tables using the Darwincorev2 format or the
+                            Darwincore 1.4 (standard DarwinCore2 version 1.2 & Darwincore
+                            version 1.4) to the exchange of information about specimens and
+                            observations from natural history collections.
+                          </p>
+                          <p>
+                            Darwin Test is a easy-to-use program, and can be used
+                            to validate data in the DarwinCore format, before uploading
+                            databases to the GBIF network.
+                          </p>
+                          <p>
+                            Darwin Test is developed and supported by the Coordination
+                            Unit of the Spanish GBIF national node. Its user interface
+                            is available in spanish and english.
+                          </p>',
+                   'fr' => '<p>' +
+                            link_to('Darwin test', 'http://www.gbif.es/darwin_test/Darwin_Test_in.php', :class => 'external') +
+                            ' est une application permettant de valider et de vérifier la qualité des
+                            enregistrements au format Darwincorev2 et au format
+                            Darwincore 1.4 (standard DarwinCore2 version 1.2 et Darwincore
+                            version 1.4).
+                          </p>
+                          <p>
+                            Darwin Test est simple d\'utilisation, et permet de vérifier les enregistrements
+                            avant de soumettre ceux-ci au réseau du GBIF.
+                          </p>
+                          <p>
+                            Darwin Test est développé et maintenu par l\'unité de coordination
+                            du noeud national Espagnol du GBIF. L\'interface utilisateur du logiciel
+                            existe en anglais et en espagnol.
+                          </p>'
+               }
+    }
+] %>
+
+
+<%= render :partial => 'project_blocks', :object => tools.sort_by { |t| t[:title]  } %>

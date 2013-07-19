@@ -1,0 +1,7 @@
+<p class="quick_links">
+  <%= t 'quick_links' %>
+  <% quick_links.each do |l| -%>
+    <%= link_to l[:name], {:anchor => l[:id]} %>
+    <%= '•' unless quick_links.last == l %>
+  <% end -%>
+</p>

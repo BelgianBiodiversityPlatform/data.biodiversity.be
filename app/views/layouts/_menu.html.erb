@@ -1,0 +1,18 @@
+<%# If you change the name, don't forget to update @selected_menu in various actions %>
+<% entries =  [
+              {:name => t('menu.home'),     	:url => {:controller => 'pages',    :action => 'index'},  :key => :home},
+              {:name => t('menu.search'),   	:url => {:controller => 'pages',    :action => 'search'}, :key => :search},
+              {:name => t('menu.projects'), 	:url => {:controller => 'projects', :action => 'index'}, :key => :projects},
+              {:name => t('menu.about'),    	:url => {:controller => 'pages',    :action => 'about'}, :key => :about},
+			  {:name => t('menu.contact_us'),	:url => {:controller => 'pages',	:action => 'contact'}, :key => :contact}
+              #{:name => 'Palette', :url => '/palette'}
+              ] %>
+
+<ul id="navigation">
+  <% entries.each do |e| %>
+  <% next if ((defined?(SKIP_MENU_ENTRIES)) and SKIP_MENU_ENTRIES.include? e[:key]) %>
+    <%= @selected_menu == e[:key] ? '<li class="selected">' : '<li>' %>
+      <%= link_to e[:name], e[:url] %>
+    <%= '</li>' %>
+  <% end %>
+</ul>

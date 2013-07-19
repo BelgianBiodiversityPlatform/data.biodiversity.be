@@ -1,0 +1,15 @@
+<% txt = [] %>
+
+<% I18n.available_locales.each do |l| %>
+  <%# Skip locales not activated in configuration %>
+  <% if AVAILABLE_LOCALES.include? l.to_s %>
+    <% unless l.to_s == I18n.locale.to_s %>
+      <% l_url = url_for(params.merge(:locale => l))%>
+
+	  <% labels = {'en' => 'English', 'fr' => 'Français', 'nl' => 'Nederlands'} %>
+
+      <% txt << link_to(labels[l.to_s], l_url) %>
+    <% end %>
+  <% end %>
+<% end %>
+<%= txt.join(' | ') %>

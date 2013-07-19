@@ -1,0 +1,54 @@
+div#submenu {
+    
+    width: 160px;
+    padding: 10px;
+	background-color: #333;
+    
+    /* for text nwo link, so selected entry */
+	color: #71ad00;
+
+    font-weight: bold;
+	float: left;
+}
+
+div#container div#middle div#page div#submenu ul li {
+    background-image:none;
+    padding: 0;
+    margin: 0;
+
+	
+}
+
+div#container div#middle div#page div#submenu ul li a {
+    color: #a9d4ff;
+}
+
+div#container div#middle div#page div#submenu ul li a:hover {
+    text-decoration: underline;
+}
+
+
+div#content {
+    margin-left: 200px;
+}
+
+img.abstract
+{
+    padding: 10px;
+    width: 64px;
+    float:left
+}
+
+p.promotors {
+    font-weight: bold;
+    text-decoration: underline;
+	text-align:right
+}
+
+div#container div#middle div#page div.abstract {
+	margin-top: 50px;
+}
+
+div#container div#middle div#page div.abstract h2 {
+	margin: 0;
+}

@@ -1,0 +1,151 @@
+<% @page_title = t('page_titles.occurrence_details') %>
+<% @js_to_load = 'occurrence_details' %>
+<% @css_to_load = 'occurrence_details' %>
+
+<div id="popupcontent">
+
+<h1><%= @occurrence.scientificname.name %></h1>
+
+<table class="properties">
+
+  <tr>
+    <td class="label">
+      <%= t 'occurrence.scientific_name' %>
+    </td>
+    <td>
+      <%= @occurrence.scientific_name || '-' %>
+    </td>
+  </tr>
+
+  <%# Test the existence of the col_done column %>
+  <%# This is done to make the app compatible with the new schema (with data from COL) %>
+  <%# and stay compatible with the old schema (without these col_* columns) %>
+  <% if @occurrence.scientificname.attributes.has_key? 'col_done' %>
+    <tr>
+      <td class="label">
+        <%= t 'occurrence.status' %>
+      </td>
+      <td>
+        <%# We cannot rely on the col_done column to check if we have this data %>
+        <%# (we have some cases where col_done is true but other columns empty => nil error) %>
+        <% unless @occurrence.scientificname.col_url.blank? %>
+          <%  link_label = @occurrence.scientificname.col_rank + ', ' + @occurrence.scientificname.col_name_status %>
+          <%= link_to link_label, @occurrence.scientificname.col_url, :target => '_blank' %> 
+        <% else %>
+          -  
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+
+  <tr>
+    <td class="label">
+      <%= t 'occurrence.gbif_key' %>
+    </td>
+    <td>
+      <%= link_to_gbif_occurrence @occurrence.key, @occurrence.key.to_s, :target => '_blank' %>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="label">
+      <%= t 'occurrence.bor' %>
+    </td>
+    <td>
+      <%= @occurrence.basisofrecord.name %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td class="label"><%= t 'occurrence.resource' %></td>
+    <td>
+      <% unless @occurrence.resource %>
+      -
+      <% else %>
+        <%= link_to_gbif_resource @occurrence.resource.name, @occurrence.resource.id, :target => '_blank' %>
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="label"><%= t 'occurrence.provider' %></td>
+    <td>
+      <% unless @occurrence.provider %>
+        -
+      <% else %>
+        <%= link_to_gbif_provider @occurrence.provider.name, @occurrence.provider.id, :target => '_blank' %>
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="label"><%= t 'occurrence.country' %> </td>
+    <td>
+      <% unless @occurrence.country %>
+        -
+      <% else %>
+        <%= @occurrence.country.name %>
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td class="label"><%= t 'occurrence.collection_date' %></td>
+    <td><%= @occurrence.date_collected || '-' %></td>
+  </tr>
+
+  <tr>
+    <td class="label"><%= t 'occurrence.collection_code' %></td>
+    <td><%= @occurrence.colcode.name %></td>
+  </tr>
+
+  <tr>
+    <td class="label"><%= t 'occurrence.institution_code' %></td>
+    <td><%= @occurrence.instcode.name %></td>
+  </tr><%# Always filled (on june 15, 2009) %>
+
+  <tr>
+    <td class="label"><%= t 'occurrence.catalog_number' %> </td>
+    <td><%= @occurrence.catalogue_no || '-' %></td>
+  </tr>
+
+  <tr>
+    <td class="label"><%= t 'occurrence.last_indexation' %></td>
+    <td><%= @occurrence.last_indexed || '-' %></td>
+  </tr>
+
+  <tr>
+    <td class="label"><%= t 'occurrence.locality' %></td>
+    <td><%= @occurrence.locality || '-' %></td>
+  </tr>
+
+  <tr>
+    <td class="label"><%= t 'occurrence.latitude' %></td>
+    <td><%= @occurrence.latitude || '-' %></td>
+  </tr>
+
+  <tr>
+    <td class="label"><%= t 'occurrence.longitude' %></td>
+    <td><%= @occurrence.longitude || '-' %></td>
+  </tr>
+
+  <tr>
+    <td class="label"><%= t 'occurrence.precision' %></td>
+    <td><%= @occurrence.coordinate_precision || '-' %></td>
+  </tr>
+
+</table>
+
+<% if @occurrence.georef? %>
+  <% @load_openlayers = true %>
+  <% @inject_in_body_tag = "onload = 'occurrenceMap(#{@occurrence.latitude}, #{@occurrence.longitude},#{@occurrence.coordinate_precision || 'null'} )'" %>
+
+  <div id="map" style="height: 360px; width: 415px; margin-right: auto; margin-left: auto;"></div>
+
+<% else %>
+  <p><%= t 'occurrence.not_georef' %></p>
+<% end %>
+
+</div>
+
+<p style="text-align: center;"><%= button_to_function t('close_window'), 'window.close()'%> </p>

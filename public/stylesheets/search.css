@@ -1,0 +1,54 @@
+input {
+    display: block;
+}
+
+div#filter_boxes {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+div#datasource, div#name, div#collect {
+    background-color: #eaf4fe;
+    padding: 8px;
+    float: left;
+    margin: 10px 10px 20px 10px;
+    width: 273px;
+    border-width: 1px;
+    border-style: solid;
+	border-color: #a9d4ff;
+}
+
+/* Subsections "tabbed" */
+div.filter_subsection {
+    margin-left: 10px;
+}
+
+div#datasource h1, div#name h1, div#collect h1 {
+    font-size:1.2em;
+    text-align: center;
+}
+
+div#collect input.small_search_field {
+    display: inline;
+    width: 65px;
+}
+
+div#datasource select {
+    width:243px;
+    margin-bottom: 10px;
+}
+
+p.formathelp {
+    margin: 3px 0px 3px 0px;
+}
+
+h2#filters {
+    background-image:url(../images/zoom.png);
+}
+
+h2#results {
+   clear: both;
+   background-image:url(../images/tag_green.png);
+}

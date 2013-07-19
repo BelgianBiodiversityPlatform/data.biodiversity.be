@@ -1,0 +1,129 @@
+<% @page_title = t 'cus.page_titles.digit_2006' %>
+
+<% projects = [
+  {
+    :html_id => 'dipol',
+    :name => 'digitisation of Pollinators preserved in Belgian collections (DIPOL)',
+              
+    :promotors => link_to('Prof. Dr P. Rasmont', 'http://biobel.biodiversity.be/person/show/11', :class => 'external') + ' (Université de Mons-Hainaut)',
+    :abstract => 'The project objective will be to develop a digitised, distributed database of
+                          specimen-level information on the Apiformes (Apoidea), using standard data
+                          exchange formats. The project will begin with existing databases and identify
+                          the most critical gaps to be filled by additional digitisation, and will
+                          develop modalities for information exchange and user-friendly sharing and access interface.',
+
+    :links => [
+      {:name => 'dataset', :url => 'http://data.gbif.org/datasets/resource/2592/'}
+    ]
+  },
+  {
+    :html_id => 'insects',
+    :name => 
+               'Inventorying the insect collection of the Ghent University Zoology Museum',
+             
+    :promotors => link_to('Prof. Dr D. Adriaens', 'http://biobel.biodiversity.be/person/show/1542', :class => 'external') + ' (Ghent University)',
+    :abstract => 'Only since 1997, the Ghent University Zoology Museum started inventorying its
+                           collection digitally on a minimal budget.  During this time more than 19000 specimens
+                           of invertebrates and vertebrates have been inventoried digitally, all of which are
+                           world-wide accessible through the internet platform of the Global Biodiversity Information Facility
+                           (GBIF).
+
+                           <p>
+                            During the last three years, concerning invertebrates, we have been focusing
+                            on the preservation and inventorying of our insect collection.  Partially with
+                            the financial support of the Belgian Biodiversity Platform (‘BeBIF’, see below),
+                            we were able to inventory 7419 insects (4063 specimens of the Goetghebuer collection
+                            and 280 of the Hostie collection) and photograph about 1000 of them digitally.
+                           </p>
+    <p>
+    More than 75 insect boxes still wait to be inventoried.  Most of these came from
+    private collectors : 9 boxes of the collection of Goetghebuer, 13 boxes of Hostie
+    and 47 boxes belonging to the collection of De Riemaecker.  These insects were
+    collected all over Belgium in a timeframe between 1888 and 1984.  Of all these
+    specimens, we know the name, collecting date and place, which makes them
+    scientifically very important to the Belgian fauna and history.  These collections
+    also represent many of the major insect orders : Orthoptera, Odonata, Phasmida,
+    Hemiptera, Homoptera, Trichoptera, Neuroptera, Lepidoptera, Diptera, Hymenoptera,
+    and Coleoptera.  Each insect box contains from 20 to 400 specimens.  The estimated total
+    is over 7500 specimens.  Momentarily no written inventory of this collection exists,
+    and the specimens are scattered throughout our collection.  Inventorying this
+    collection specimens would not only make them accessible, but at the same time
+    we would be able to regroup them into a manageable and consultable scientific collection.
+    </p>
+    <p>
+    With this project we aim to inventory most of or hopefully all of this remaining
+    collection. We also would like to photograph a major part of this collection
+    digitally for making them accessible through the internet.
+    </p>',
+    :links => [
+      {:name => 'dataset', :url => 'http://data.gbif.org/datasets/resource/1938/'}
+    ]
+  },
+  {
+    :html_id => 'muridae',
+    :name => 'Providing access to biodiversity data on African Muridae',
+              
+    :promotors => link_to('Prof. Dr E. Verheyen', 'http://biobel.biodiversity.be/person/show/1032', :class => 'external') + ' (Royal Belgian Institute of Natural Sciences)',
+    :image => 'custom/rodentia.jpg',
+    :abstract => 
+        '<p>
+          In agreement with the objectives of the Belgian Biodiversity Platform, the aim of our proposal is to
+          make all relevant information pertaining to specimen and tissue collections on Africa Muridae
+          accessible to scientists, field actors and decision makers worldwide. The information that this project
+          intends to make available concerns the taxonomic status and collection data for each specimen in our
+          collections as well as all the available ecological and taxonomic information for these specimens.
+          The limitation and scope of this proposal is that it focuses on a part of the collections for which most
+          data exist in digital format. Since these collections are the subject of ongoing research, the databases
+          involved in this project will be regularly updated and expanded to incorporate data for new collections
+          from other parts of Africa.
+        </p>
+        <p>
+          The selected collections are the best documented portions of collections from the
+          RMCA-Tervuren, the RBINS and the University of Antwerp. These represent ± 20% of the complete
+          Muridae collections [>60,000 specimens] in these three institutes. They include >20 type specimens
+          from Tanzania and DR Congo (Kikwit and the Natural Parks of the Former Belgian Congo), >25
+          genera and >150 (sub-)species from >100 localities. These collections are almost completely [>90%]
+          entered in databases, they yield craniometrical measurements of 6,751 specimens, test results of 3,330
+          specimens against viruses and/ or parasites, chromosomal information and references to >5,500 tissue
+          samples and >1000 mitochondrial DNA sequences [in the context of a DNA barcoding project].
+        </p>',
+      
+    :links => [
+      {:name => 'dataset', :url => 'http://data.gbif.org/datasets/resource/2405/'},
+      {:name => 'website', :url => 'http://projects.biodiversity.be/africanrodentia'}
+    ]
+  },
+  {
+    :html_id => 'arachnofauna',
+    :name => 
+                'Updating the database of the Belgian Arachnofauna',
+    :promotors => link_to('Dr F. Hendrickx', 'http://biobel.biodiversity.be/person/show/1481', :class => 'external')+' (Ghent University)',
+    :abstract => '<p>
+                            In an attempt to centralize this growing amount of information on Belgian spider faunistics and
+                            ecology, a Database of the Belgian Arachnofauna was developed in which data are stored in a digital
+                            and easy accessible format. The main aims of this database are (i) easy access to available raw data
+                            of each spider species in Belgium, (ii) summarizing the geographic distribution of the species on
+                            automatically updated distribution maps, (iii) displaying integrated information about the ecology of
+                            each species by displaying bar charts of the species distribution among habitat categories in
+                            standardized sampling schemes, (iv) obtaining species lists of a particular site and (v) easy access to
+                            publication lists where data about the species can be found.
+                          </p>
+                          <p>
+                            The aim of this project is to incorporate the species data into the database together with distributional
+                            and environmental data about the sampling locations. In practice, this includes (i) merging the digital
+                            available species data into the species data of the database, (ii) digitisation of published and
+                            unpublished species data (iii) updating literature references and linking them to the data of the
+                            sampling locations (iv) translating the habitat of the sampling locations into European Nature
+                            Information System habitat codes and (v) building a list of all sites where available data come from
+                            such that duplicates can be removed and quality control on sites can be performed.
+                          </p>',
+                  
+    :links => [
+      {:name => 'dataset', :url => 'http://data.gbif.org/datasets/resource/2404/'}
+    ]
+  }
+] %>
+
+<h1><%= t 'cus.projects.dc_2006' %></h1>
+<h3><%= t 'cus.projects.four_2006' %></h3>
+<%= render(:partial => 'digitxxx', :locals => {:projects => projects}) %>

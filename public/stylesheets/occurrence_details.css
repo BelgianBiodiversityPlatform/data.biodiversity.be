@@ -1,0 +1,24 @@
+div#popupcontent {
+    margin-left: auto;
+    margin-right: auto;
+    width: 420px;
+    background-color: #fff;
+    padding: 15px;
+    font-size: 0.85em;
+}
+
+div#map {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+table.properties {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+td.label {
+    font-weight: bold;
+    color: #003333;
+    white-space: nowrap;
+}

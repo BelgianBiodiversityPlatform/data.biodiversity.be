@@ -1,0 +1,579 @@
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+  /*font-family: arial, helvetica, sans-serif;*/
+  font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+
+  text-align:center; /* IE centering hack, overriden in div#container */
+  
+  /* Separate background-* properties for easy override in customization */
+  background-color: #eaf4fe; /* Must match the gradient end color (to be expendable) */
+  background-image: url(../images/bg.jpg);
+  background-repeat: repeat-x;
+}
+
+img {
+  border: 0;
+}
+
+h1, h2, h3, h4 {
+	font-family: 'Arvo', Georgia, Times, serif;
+}
+
+.current_locale img {
+    opacity:0.4;
+    filter: alpha(opacity=40);
+}
+
+input, textarea {
+  background-color:#F5F5F5;
+  border:1px solid #D9D9D9;
+}
+
+input.image {
+  background-color: transparent;
+  border: 0;
+}
+
+
+div#container {
+  width: 960px;
+
+  box-shadow: 0 0 6px #999;
+
+  /* Horizontal centering */
+  margin-left: auto;
+  margin-right: auto;
+
+  text-align: left; /* To counteract IE bug, see body */
+
+}
+
+  div#container div#header {
+    /* border and rounded corners in image */
+    /* image overflow with transparency on the right side */
+/*    background-color: #115C71; /*#4AB3B3;*/
+	position: relative;
+  }
+
+  div#container div#header h1 {
+	position: absolute;
+	bottom: 65px;
+	right: 10px;
+	font-size: 72px;
+	color: #fff;	
+	text-shadow: #44631E -1px -1px;
+	letter-spacing: -2px;
+}
+	div#container div#header h2 {
+		position: absolute;
+		bottom: 0;
+		right: 10px;
+		font-style: italic;
+		font-weight: normal;
+		opacity: 0.4;
+		font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+	}
+	
+   div#container div#header div#locale_selector {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+/*	background-color: #000;*/
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+/*	opacity: 0.3;*/
+	font-size: 0.85em;
+	background-color:rgb(0,0,0); /* IE */
+	background-color:rgba(0,0,0,0.5);
+   }
+
+   div#container div#header div#locale_selector a {
+   color: #ffcb21;
+   text-decoration: none;
+   font-weight: bold;
+   }
+
+   div#container div#header div#locale_selector a:hover {
+   text-decoration: underline;
+   }
+  
+
+  div#container div#footer {
+    overflow: hidden;
+    background-color: #ffffff;
+	
+  }
+
+  div#container div#footer p {
+    font-size:80%;
+    margin: 0;
+    text-align:center;
+	padding: 5px;
+  }
+
+  div#container div#header img, div#container div#footer img {
+    display: block;
+  }
+
+  div#container div#middle {
+    /*width: 898px; /* For IE. 898 is page width - border */
+    background-color: #ffffff;/*#e7f5f5;*/
+  }
+
+  div#container div#middle, div#container div#footer {
+      /*-moz-box-shadow:5px 5px 40px #61B3B3;*/
+  }
+
+    div#container div#middle div#tabs {
+      background-color: #222;
+      padding: 4px 4px 0px 4px;
+      overflow: hidden; /* To prevent RSS img to have effect on element in next div (right margin on login box) */
+      *height: 30px;
+    }
+
+      div#container div#middle div#tabs ul#navigation {
+	list-style: none;
+	padding: 0;
+	margin: 0
+
+      }
+
+	div#container div#middle div#tabs ul#navigation li {
+	  float: left;
+	  margin-right: 5px;
+/*	  background: #a6810b none repeat scroll 0 0;*/
+	  padding: 2px 5px 2px 5px;
+	  -moz-border-radius-topleft: 5px;
+	  -moz-border-radius-topright: 5px;
+
+	  -webkit-border-top-left-radius: 5px;
+	  -webkit-border-top-right-radius: 5px;
+	}
+
+	/*div#container div#middle div#tabs ul#navigation li:hover {
+		  background-color: #ffcb21;
+		}*/
+
+      div#container div#middle div#tabs ul#navigation li:hover a {
+	  color: #71ad00;
+	}
+
+      div#container div#middle div#tabs ul#navigation li a {
+	  text-decoration: none;
+	  color: white;
+	  font-size: 0.85em;
+	  font-weight: bold;
+	  font-variant: small-caps;
+	}
+
+      div#container div#middle div#tabs ul#navigation li.selected {
+	background-color: #ffffff; /*#e7f5f5; */
+
+      }
+
+div#container div#middle div#tabs ul#navigation li.selected a {
+	color: #455c65;
+}
+
+
+	   div#container div#middle div#login {
+              float: right;
+	      background-color: #a9d4ff;
+	      padding: 2px 10px;
+	      overflow: hidden; /* To prevent RSS img to have effect on element in next div (right margin on login box) */
+	      height: 20px; 
+              -moz-border-radius-bottomleft: 7px;
+              -webkit-border-bottom-left-radius: 7px;
+/*              color: white;*/
+              font-size: smaller;
+	    }
+
+           div#container div#middle div#login a {
+              color: #00529b;
+              text-decoration: none;
+              
+           }
+
+           div#container div#middle div#login a:hover {
+              text-decoration: underline;
+           }
+
+           div#container div#middle div#login img {
+              margin-bottom: -3px; /* align img with text */
+           }
+
+div#container div#middle div#page {
+	color: #455C65;
+/*	font-size: 80%;*/
+		font-size: 0.8em;
+		line-height: 175%;
+        overflow: hidden;
+        clear: both;
+        padding: 15px 15px 50px 15px;
+}
+
+div#container div#middle div#page p {
+	margin: 25px 0; /* Add some margin to P to make some contrast with the large line-height */
+}
+
+div#container div#middle div#page p.quick_links {
+	font-size: 0.85em;
+	display: inline-block;
+	border: 1px solid;
+	padding:5px 20px 5px 45px;
+	background:#a9d4ff url(../images/fastforward.png) no-repeat scroll 15px center;
+}
+
+      div#container div#middle div#page p.quick_links a {
+          color:#4C4C00;
+      }
+
+      div#container div#middle div#page p.quick_links a:hover {
+          background-color:#4C4C00;
+          color: white;
+      }
+
+      /*h1, h2, h3, h4, legend{
+		color: #a9d4ff;
+      }*/
+
+      h1 {
+          margin: 0;
+		  letter-spacing: -1px;
+		  font-size: 50px;
+		  line-height: 65px;
+          }
+
+div#container div#middle div#page h2 {
+	border-bottom: 1px dotted;
+    background-position:right;
+    background-repeat:no-repeat;
+	margin-top: 45px;
+	margin-bottom: 8px;
+}
+
+      div#container div#middle div#page ul {
+	list-style-type:none;
+        padding: 0;
+        margin: 0;
+      }
+
+      div#container div#middle div#page ul li {
+          background-image: url("../images/bullet_red.png");
+          background-repeat: no-repeat;
+          padding-left: 1.5em;
+          margin: 0 0 2px 10px;
+      }
+
+div#page a, div#container div#footer p a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #71ad00;
+}
+
+div#page a:hover, div#container div#footer p a:hover {text-decoration: underline;}
+
+      div#container div#middle div#page a.top {
+	margin-left: 600px;
+      }
+
+      div#container div#middle div#page a:hover.top {
+	background-color: transparent;
+      }
+
+      
+
+div#container div#middle div#page a.external {}
+
+      p.note_todo {
+          color: white;
+          background-color: red;
+      }
+
+      div#container div#middle div#page p.btt {
+          
+          background-image:url(../images/back_to_top.png);
+          background-repeat:no-repeat;
+          background-position: left center;
+          padding-left: 20px;
+          font-size: smaller;
+          width: 90px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 25px;
+      }
+
+      fieldset ol {
+          list-style-type:none;
+          margin-left: 30px;
+          padding-left: 0px;
+      }
+
+/* Success, Error, ... boxes */
+div.flash_error, div.flash_success, div.flash_info {
+    padding: 7px 7px 7px 28px;
+    margin-bottom: 18px;
+    border-width: 1px;
+    border-style: solid;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 7px center;
+}
+
+div.flash_error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url(../images/delete.png);
+}
+
+div.flash_success {
+    background-image: url(../images/accept.png);
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+div.flash_info {
+    color: #00529B;
+    background-image: url(../images/information.png);
+    background-color: #a9d4ff;
+    /*border-color: #0f5a5a;*/
+    margin-bottom: 0px; /* The others are used at top of the page, this one is not*/
+}
+
+span.imp {
+    font-weight: bold;
+}
+
+span.small {
+    color: #990000;
+    font-size: 80%;
+}
+
+p#view_switcher {
+    
+}
+
+p#view_switcher a {
+    color: #fff;
+}
+
+p#view_switcher a:hover {
+    text-decoration: underline;
+}
+
+p#view_switcher .selected {
+    font-weight: bold;
+}
+
+div#results {
+    background-color: #f0f0f0;
+    /*border: 1px solid #444;*/
+    padding: 2px 5px;
+    margin-top: 12px;
+    /*-moz-border-radius-topleft: 7px;
+        -moz-border-radius-topright: 7px;
+        -webkit-border-top-left-radius: 7px;
+        -webkit-border-top-right-radius: 7px;*/
+}
+
+table#rt {
+    background-color:#333333;
+    border-collapse:collapse;
+    width: 100%;
+    color: #cccccc;
+    text-align: left;
+    line-height: 1.6em;
+    clear: both; /* needed for webkit */
+    margin-bottom:5px;
+}
+
+table#rt th {
+    background-color:#222222;
+    border-bottom:1px solid #111111;
+    line-height: 1.8em;
+}
+
+table#rt th a {
+    color: #fff;
+	
+}
+
+table#rt th a:hover {
+	color: #a9d4ff;
+	text-decoration: none;
+}
+
+table#rt th a.current {
+    color: #A9D4FF;
+}
+
+table#rt tr:hover {
+    background-color:#222222;
+}
+
+table#rt td a {
+    color: #71ad00;
+}
+
+table#rt td a:hover {
+    /*background-color: #B29933;
+        color: #333300;*/
+}
+
+div#search_results a.nohover:hover {
+    background-color: transparent;
+}
+
+div#page .nohover:hover {
+   background-color: transparent;
+}
+
+
+table#rt img.transp {
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+    }
+
+table#rt img.transp:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    }
+
+
+
+
+table#rt td.scientific_name {
+    font-style: italic;
+}
+
+
+div.exports {
+    font-size: 11px;
+}
+
+div#container div#middle div#page div.exports p {/*margin: 0px;*/}
+
+div.paginator {
+    background-color:#222222;
+    color:white;
+    float:right;
+    font-size:11px;
+    padding: 5px;
+    margin-top: 3px;
+}
+
+div.complete_rt {
+    clear: both;
+}
+
+div.paginator img {
+    display:inline-block;
+    vertical-align:middle;
+}
+
+div.paginator img.disabled {
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+}
+
+label {
+    font-weight: bold;
+
+}
+
+
+/* search_results and its content is shared between index and search */
+div#search_results {
+    clear: both;
+    overflow: hidden;
+}
+
+p#pre_search, p#data_agreement {
+    background-color: #444;
+    color: #fff;
+    padding: 8px 8px 8px 25px;
+    border: 1px solid #333;
+    background-repeat: no-repeat;
+    background-position: 5px;
+}
+
+p#pre_search        { background-image: url("../images/lightbulb.png"); }
+p#data_agreement    { background-image: url("../images/warning.png"); margin: 2px -6px -6px -6px;}
+
+
+
+div.tooltiptable {
+    background-color: #f5f5f5;
+    color: #222;
+    padding: 5px;
+    font-size: smaller;
+    border: 1px solid #222;
+}
+
+div#container div#middle div#page div.tooltiptable p {
+    margin: 0;
+}
+
+.spamcode {
+    color: red;
+}
+
+div#page a.cupid-green {
+  display: inline-block;	
+  background-color: #7fbf4d;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#7fbf4d), to(#63a62f));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -moz-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -ms-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -o-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: linear-gradient(top, #7fbf4d, #63a62f);
+  border: 1px solid #63a62f;
+  border-bottom: 1px solid #5b992b;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 0 0 #96ca6d;
+  -moz-box-shadow: inset 0 1px 0 0 #96ca6d;
+  -ms-box-shadow: inset 0 1px 0 0 #96ca6d;
+  -o-box-shadow: inset 0 1px 0 0 #96ca6d;
+  box-shadow: inset 0 1px 0 0 #96ca6d;
+  color: #fff;
+  font: bold 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  line-height: 1;
+  padding: 7px 0 8px 0;
+  text-align: center;
+  text-shadow: 0 -1px 0 #4c9021;
+  width: 150px; }
+  div#page a.cupid-green:hover {
+	text-decoration: none;
+    background-color: #76b347;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#76b347), to(#5e9e2e));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -moz-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -ms-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -o-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: linear-gradient(top, #76b347, #5e9e2e);
+    -webkit-box-shadow: inset 0 1px 0 0 #8dbf67;
+    -moz-box-shadow: inset 0 1px 0 0 #8dbf67;
+    -ms-box-shadow: inset 0 1px 0 0 #8dbf67;
+    -o-box-shadow: inset 0 1px 0 0 #8dbf67;
+    box-shadow: inset 0 1px 0 0 #8dbf67;
+    cursor: pointer; }
+  div#page a.cupid-green:active {
+    border: 1px solid #5b992b;
+    border-bottom: 1px solid #538c27;
+    -webkit-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
+    -moz-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
+    -ms-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
+    -o-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
+    box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee; 
+}

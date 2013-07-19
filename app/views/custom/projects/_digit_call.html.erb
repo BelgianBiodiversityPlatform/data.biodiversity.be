@@ -1,0 +1,18 @@
+<div class="abstract">
+	<h2 id="<%= digit_call[:html_id]%>"><%= digit_call[:name] %></h2>
+	<p class="promotors"><%= digit_call[:promotors] %></p>	
+
+	<%= image_tag digit_call[:image], :class => 'abstract' if digit_call[:image] %>
+	<%= digit_call[:abstract] %>
+	
+	<% if digit_call[:links] %>
+	<p>
+		<% digit_call[:links].each do |l| %>
+			<%= link_to l[:name], l[:url], :class => 'external' %>
+			<%= '•' unless digit_call[:links].last == l %>
+		<% end %>
+	</p>
+	<% end %>
+</div>
+
+<%= back_to_top %>

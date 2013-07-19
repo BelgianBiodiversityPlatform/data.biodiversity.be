@@ -1,0 +1,9 @@
+new OpenLayers.Layer.WMS(
+"<%= overlay_js[:name][I18n.locale.to_s] %>", "<%= overlay_js[:url] %>",
+{
+layers: '<%= overlay_js[:layer] %>',
+projection: '<%= overlay_js[:srs] %>',
+transparent: 'true'
+}
+, {visibility: false}
+)

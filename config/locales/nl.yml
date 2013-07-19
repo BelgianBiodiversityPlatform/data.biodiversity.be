@@ -1,0 +1,130 @@
+nl:
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Zondag, Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag, Zaterdag]
+    abbr_day_names: [Zo, Ma, Di, Woe, Do, Vr, Zat]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Januari, Februari, Maart, April, Mei, Juni, Juli, Augustus, September, Oktober, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, Mei, Jun, Jul, Aug, Sep, Okt, Nov, Dec]
+    # Used in date_select and datime_select.
+    order: [ :year, :month, :day ]
+
+  page_titles:
+    home: Home
+    contact: Contacteer ons
+    occurrence_details: 'Details'
+    search: Zoek
+    projects_prefix: Projecten
+
+  menu:
+    home: Home
+    search: Zoek
+    projects: Projecten
+    about: Over ons
+    contact_us: Contacteer ons
+
+  rt:
+    exports:
+      export_these: Exporteer de resultaten als
+      spreadsheet: 'werkblad (CSV)'
+      in_these: Van de
+      results: esultaten zijn er
+      are_georeferenced: voorzien van geografische coördinaten
+      export_them_for: Exporteer de resultaten naar
+      show_them: Laat de resultaten zien op de kaart
+
+    occurrences_table: Bekijk resultaten als meldingstabel
+    species_list: 'Bekijk resultaten als soortenlijst'
+    results: 'Resultaten'
+    total: 'Totaal'
+    gbif_key: GBIF sleutel
+    scientific_name: Wetenschappelijke naam
+    locality: Lokaliteit
+    resource: Oorsprong
+    georef: georef
+    sorry_no_results: Sorry, geen resultaten gevonden
+
+  quick_links: 'Snelkoppelingen : '
+  back_to_top: Naar boven
+  close_window: 'Sluit venster'
+
+  index:
+    by_scientific_name: 'Naar soortnamen :'
+    by_geographic_zone: 'In geografische zone :'
+    show: Projecteer
+    search: 'Zoek'
+    enter_a_scientific: 'Geef een wetenschappelijke naam of selecteer een gebied om passende meldingen terug te vinden.'
+    statistics: 'Statistieken'
+    occurrences_in: meldingen in
+    georeferenced_occurrences: 'geografisch gerefereerde meldingen'
+    last_data_update: 'Laatste data update :'
+    browser_warning: 'Deze website is best te gebruiken met een moderne browser zoals Firefox 4+, Explorer8+, Safari 4+ en Google Chrome met volledige JavaScript ondersteuning.'
+    legend: legende
+
+  search:
+    filters: 'Filters'
+    data_sources: 'Oorsprong Data '
+    providercountry: 'Land provider'
+    dataprovider: 'Data provider'
+    resource: 'Oorsprong'
+    scientific_name: 'Wetenschappelijke naam'
+    sn_contains: 'Wetenschappelijke naam bevat :'
+    locality_contains: "Lokaliteit bevat :"
+    go: 'zoek / update'
+    co_obs: 'Verzamelen/ observatie'
+    co_obs_date: Datum
+    co_obs_place: Place
+    before: 'Voor : '
+    after: 'Na : '
+    yyyymmdd: '(JJJJ-MM-DD)'
+    results: 'Resultaten'
+    please_select: 'Gelieve filters te selecteren om resultaten te zien.'
+    latitude: Breedtegraad
+    longitude: Lengtegraad
+    min: Min.
+    max: Max.
+    example: 'Example : lat 50.455 - lon 5.105'
+
+  contact:
+    contact_us: Contacteer ons
+    we_re_constantly: 'Wij proberen dit portal steeds te verbeteren en aan te passen aan de noden van de gebruikers. Dit kunnen wij niet zonder u suggesties en daarom is elke vorm van feedback zeer geapprecieerd. Laat dus uw opmerkingen of doel van uw bezoek achter in het daartoe bestemde vak.'
+    so_please: 'Indien u verder nog vragen heeft, aarzel dan niet om ons te contacteren.'
+    all_fields_are: 'Alle velden zijn verplicht'
+    about_you: 'Persoonsgegevens'
+    your_name: 'Uw naam'
+    your_email: 'Uw emailadres'
+    your_message: 'Uw bericht'
+    title: 'Ttel'
+    content: Inhoud
+    to_avoid_spam1: "Om SPAM te vermijden typ "
+    to_avoid_spam2: " in het kader : "
+    send_message: 'Stuur bericht'
+    msg_ok: 'Bericht verzonden'
+    msg_error: 'Bericht niet verzonden'
+
+  occurrence:
+    scientific_name: 'Wetenschappelijke naam :'
+    status: 'Status :'
+    gbif_key: 'GBIF sleutel :'
+    bor: 'Origine record :'
+    resource: 'Bron :'
+    provider: 'Provider :'
+    country: 'Land :'
+    collection_date: 'Datum van inzamelen :'
+    collection_code: 'Collectie code :'
+    institution_code: 'Instituut code :'
+    catalog_number: 'Catalogusnummer :'
+    last_indexation: 'Laatste indexering :'
+    locality: 'Lokaliteit :'
+    latitude: 'Breedtegraad :'
+    longitude: 'Lengtegraad :'
+    precision: "Coordinates precision :"
+    not_georef: 'Geen georeferentie aanwezig.'

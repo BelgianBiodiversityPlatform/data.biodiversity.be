@@ -1,0 +1,49 @@
+
+h2#about_us {
+   background-image:url(../images/group.png);
+}
+
+h2#links {
+   background-image:url(../images/world_link.png);
+}
+
+h2#tools {
+   background-image:url(../images/bricks.png);
+}
+
+h2#resources {
+   background-image:url(../images/picture.png);
+}
+
+div.roundedbox {
+    background-color: #F0F0F0;
+    border:1px solid #C0C0C0;
+    padding: 10px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    color: #222;
+}
+
+div#iyb {
+    float:right;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    background-color: #F0F0F0;
+    padding: 10px;
+    width: 230px;
+    text-align: center;
+}
+
+div#iyb h1{
+    color: #00a75f;
+    text-align: left;
+    font-size: 1.9em;
+}
+
+div#iyb a:hover {
+    background-color: transparent;
+}
+
+div#iyb h1 span.fw {
+    color: #00483a;
+}

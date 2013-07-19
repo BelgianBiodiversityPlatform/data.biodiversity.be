@@ -1,0 +1,10 @@
+<div class="flash_success" id="flash_success">
+  <%= success %>
+</div>
+
+<%= update_page_tag do |page|
+  page.delay(3) do
+    page.visual_effect(:fade, "flash_success")
+  end
+end %>
+

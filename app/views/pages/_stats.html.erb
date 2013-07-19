@@ -1,0 +1,6 @@
+<div id="stats" class="roundedbox">
+  <h2><%= t 'index.statistics' %></h2>
+  <span class="imp"><%= number_with_delimiter(@counter_all) %></span> <%= t 'index.occurrences_in' %> <span class="imp"><%= COUNTRY_NAME[I18n.locale.to_s] %></span>.
+  <p><span class="imp"><%= number_with_delimiter @counter_georef %></span> <%= t 'index.georeferenced_occurrences' %>. </p>
+  <p><%= t 'index.last_data_update' %> <span class="imp"><%= l @last_update %></span>.</p>
+</div>

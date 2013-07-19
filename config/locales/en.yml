@@ -1,0 +1,112 @@
+en:
+  page_titles:
+    home: Home
+    contact: Contact us
+    occurrence_details: Details about an occurrence
+    search: Search
+    projects_prefix: Projects
+
+  menu:
+    home: Home
+    search: Search
+    projects: Projects
+    about: About us
+    contact_us: Contact us
+
+  rt:
+    exports:
+      export_these: Export these results for
+      spreadsheet: spreadsheet (CSV)
+      in_these: In these
+      results: results
+      are_georeferenced: are georeferenced
+      export_them_for: Export them for
+      show_them: Show them on the map
+
+    occurrences_table: "View results as occurrences table"
+    species_list: View results as species list   
+    results: results
+    total: total
+    gbif_key: GBIF key
+    scientific_name: Scientific name
+    locality: Locality
+    resource: Resource
+    georef: Georef ?
+    sorry_no_results: Sorry, no results match the currents criterias.
+
+  quick_links: "Quick links :"
+  back_to_top: Back to top
+  close_window: close window
+
+  index:
+    by_scientific_name: "By scientific name :"
+    by_geographic_zone: "By geographic zone :"
+    show: Show
+    search: Search
+    enter_a_scientific: Enter a scientific name or select a zone on the map to view matching occurrences.
+    statistics: Statistics
+    occurrences_in: occurrences in
+    georeferenced_occurrences: georeferenced occurrences
+    last_data_update: "Last data update :"
+    browser_warning: "This website requires a modern browser (Firefox 4+, Explorer 8+, Safari 4+, Google Chrome, ...) with full JavaScript support."
+    legend: legend
+
+  search:
+    filters: Filters
+    data_sources: Data sources
+    providercountry: "Provider country :"
+    dataprovider: "Data provider :"
+    resource: "Resource : "
+    scientific_name: Scientific Name
+    sn_contains: "Scientific name contains :"
+    locality_contains: "Locality contains : "
+    go: search / update
+    co_obs: "Collected / observed"
+    co_obs_date: Date
+    co_obs_place: Place
+    before: 'Before :'
+    after: 'After :'
+    yyyymmdd: (YYYY-MM-DD)
+    results: Results
+    please_select: Please select filters to view matching occurrences.
+    latitude: Latitude
+    longitude: Longitude
+    min: Min.
+    max: Max.
+    example: 'Example : lat 50.455 - lon 5.105'
+
+  contact:
+    contact_us: Contact us
+    we_re_constantly: We're constantly improving the functionality of this data portal, and the quality and quantity of data accessed through it. For this we depend on your suggestions. We would also appreciate knowing the purpose of your visit to this website, and to know which data help you in your research.
+    so_please: So please don't hesitate to contact us with any question or concern.
+    all_fields_are: All fields are mandatory.
+    about_you: About you
+    your_name: "Your name :"
+    your_email: "Your e-mail address :"
+    your_message: Your message
+    title: "Title :"
+    content: "Content :"
+    to_avoid_spam1: "To avoid SPAM, please enter "
+    to_avoid_spam2: "  in the following box : "
+    send_message: Send
+    msg_ok: Thank you for your message.
+    msg_error: Error. Please check each field is fullfilled.
+
+  occurrence:
+    scientific_name: "Scientific name :"
+    status: "Status :"
+    gbif_key: "GBIF key :"
+    bor: "Basis of record :"
+    resource: "Resource :"
+    provider: "Provider :"
+    country: "Country :"
+    collection_date: "Date collected / observed :"
+    collection_code: "Collection code :"
+    institution_code: "Institution code :"
+    catalog_number: "Catalog number :"
+    last_indexation: "Last indexation :"
+    locality: "Locality :"
+    latitude: "Latitude :"
+    longitude: "Longitude :"
+    precision: "Coordinates precision :"
+    not_georef: "This occurrence is not georeferenced."

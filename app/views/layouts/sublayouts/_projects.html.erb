@@ -1,0 +1,14 @@
+<div id="submenu">
+	<%# Just use the partial to set @sub_menu_entries %>
+	<% render :partial => 'custom/layouts/sublayouts/submenuentries' %>
+	<ul>
+		<%# @sub_menu_entries must be set in the previous partial ! %>
+		<% @sub_menu_entries.each do |e| -%>
+		<li><%= link_to_unless_current e[:name], e[:url] %> </li>
+		<% end -%>
+	</ul>
+</div>
+
+<div id="content">
+	<%= yield %>
+</div>

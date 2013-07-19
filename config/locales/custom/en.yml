@@ -1,0 +1,34 @@
+en:
+  cus:
+    menu_projects:
+      our_projects: Our projects
+      digit_call: Digitisation Calls
+      2010_call: 2010 Call
+      2009_call: 2009 Call
+      2007_call: 2007 Call
+      2006_call: 2006 Call
+      others: Others
+      technology: Technology
+      cleaning_tools: Cleaning Tools
+    page_titles:
+      digit_2006: 2006 Call
+      digit_2007: 2007 Call
+      digit_2009: 2009 Call
+      digit_2010: 2010 Call
+      technology: Technology
+      tools: Tools
+    projects:
+      dc_2010: Digitisation Call 2010
+      three_2010: Three projects have been selected under the 2010 call.
+      dc_2009: Digitisation Call 2009
+      three_2009: Three projects have been selected under the 2009 call.
+      dc_2007: Digitisation Call 2007
+      four_2007: Four projects have been selected under the 2007 call.
+      dc_2006: Digitisation Call 2006
+      four_2006: Four projects have been selected under the 2006 call.
+      technological_aspects: Technological Aspects
+      cleaning_tools: Cleaning Tools
+      bdc_ic: Biodiversity data cleaning is a tedious and time consuming task.
+      you_will_find: You will find hereafter some of the best tools available that will help you to improve the quality of your datasets.
+    
+    bbpf: Belgian Biodiversity Platform
