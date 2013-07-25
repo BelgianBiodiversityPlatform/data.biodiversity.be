@@ -47,15 +47,22 @@ CREATE TABLE gbif_occurrences(
 	"GBIF portal url"	 	text,
 	"GBIF webservice url" 	text
 )WITH OIDS;
-
+create unique index guid_idx on gbif_occurrences ("GUID");
+	
 --- Data occurring in Mauritania
-COPY  gbif_occurrences		FROM '/home/nnoe/websites/test_import_mdp/occurrences.txt' HEADER CSV DELIMITER '\t' QUOTE '"' NULL AS '';
+COPY  gbif_occurrences		FROM '/home/aheugheb/db/BDP/occurrence-search/MR/2010-02-25/occurrence-search.txt' HEADER CSV DELIMITER '\t' QUOTE '"' NULL AS '';
 
 --- Data occurring in Belgium
---- COPY  gbif_occurrences		FROM '/home/aheugheb/db/BDP/occurrence-search/BE/2010-03-03/occurrence-search.txt' HEADER CSV DELIMITER '\t' QUOTE '"' NULL AS '';
+COPY  gbif_occurrences		FROM '/home/aheugheb/db/BDP/occurrence-search/BE/2010-07-27/occurrence-search-DIPOL.txt' HEADER CSV DELIMITER '\t' QUOTE '"' NULL AS '';
+COPY  gbif_occurrences		FROM '/home/aheugheb/db/BDP/occurrence-search/BE/2010-10-19/occurrence-search-1700-1957.csv' HEADER CSV DELIMITER ',' QUOTE '"' NULL AS '';
+COPY  gbif_occurrences		FROM '/home/aheugheb/db/BDP/occurrence-search/BE/2010-10-19/occurrence-search-1958-2010.csv' HEADER CSV DELIMITER ',' QUOTE '"' NULL AS '';
+
+
+alter table gbif_occurrences drop column ft_id;
+COPY  gbif_occurrences		FROM '/home/aheugheb/db/BDP/BeBIFData/10969-BR-IFBL/occurrence-search-1269960535989.txt' HEADER CSV DELIMITER '\t' QUOTE '"' NULL AS '';
 
 ---within Belgium bounding box (2.5-6.4 East, 49.5-51.5 North)
---- COPY  gbif_occurrences		FROM '/home/aheugheb/db/BDP/occurrence-search/14-12-2009/occurrence-search-1260786910312.txt' HEADER CSV DELIMITER '\t' QUOTE '@' NULL AS '';
+COPY  gbif_occurrences		FROM '/home/aheugheb/db/BDP/occurrence-search/14-12-2009/occurrence-search-1260786910312.txt' HEADER CSV DELIMITER '\t' QUOTE '@' NULL AS '';
 select "Country (interpreted)", count (*) from  gbif_occurrences group by "Country (interpreted)";
 
 

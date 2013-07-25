@@ -1,7 +1,23 @@
-1/ From GBIF dat portal
+-- NEW WAY using Belgian Data Slice--
+1/Load GBIF Export
+Run ImportGBIFExport.sql
+
+2/Create tables
+Run GBIFCreateSchema.sql
+
+3/ Populate occurrences
+Run Populate_from_export.sql 
+
+4/ add Catalog of Life info (network, providers, resources) using webservices
+ruby -rubygems colWebServices.rb <db> <user> <psswd>
+
+
+--OLD WAY using GBIF webportal--
+1/ From GBIF data portal
 1.1/Extract occurrences
 occurrences_search form http://data.gbif.org/countries/BE
 click Occurrences, then download Spreadsheet of Results
+
 !!!Watch out for unmatched " strings and tab within text fields!!!
 
 1.2/Extract metadata
@@ -21,3 +37,7 @@ ruby -rubygems ImportMetadata.rb <db> <user> <psswd>
 
 4/ Occurrences
 Run Populate.sql 
+
+
+5/ add Catalog of Life info (network, providers, resources) using webservices
+ruby -rubygems colWebServices.rb <db> <user> <psswd>

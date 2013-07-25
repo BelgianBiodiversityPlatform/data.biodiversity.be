@@ -1,84 +1,57 @@
+update gbif_export set "latitude" = replace("latitude", ',', '.'), "longitude" = replace("longitude", ',', '.')
 
-
+#countries and ranks
 COPY  countries (name, code) FROM '/home/aheugheb/db/BDP/Countries_UTF8.txt' HEADER CSV DELIMITER '\t' NULL AS '';
-
-UPDATE providers set country_id= c.id from countries c where c.code= isoCountryCode;
-
-
-INSERT into instCodes (name) (select distinct  "Institution code" from gbif_occurrences);
-
-
-INSERT into colCodes (name) (select distinct  "Collection code" from gbif_occurrences);
-
-
-INSERT into scientificNames (name) (select distinct  "Scientific name (interpreted)" from gbif_occurrences);
-
-
-
-INSERT into basisOfRecords (name) (select distinct  "Basis of record" from gbif_occurrences);
-
-
-
-
 COPY  ranks FROM '/home/aheugheb/db/BDP/ranks_UTF8.txt' HEADER CSV DELIMITER '\t' NULL AS '';
 
 
-	
+###Providers, resources, institutions and collections codes
 
-insert into flattaxons (k_name, p_name, c_name, o_name, f_name, g_name) (select  distinct on ("Kingdom", "Phylum", "Class", "Order", "Family", "Genus") "Kingdom", "Phylum", "Class", "Order", "Family", "Genus" from gbif_occurrences);
+INSERT into providers (id,name, country_id) (
+	select distinct  on ("data_provider_id") "data_provider_id", "data_provider", country.id from gbif_export occ
+	LEFT JOIN countries country on (country.code = occ."provider_country")
+);
+INSERT into resources (id,name, provider_id) (select distinct  on ("data_resource_id") "data_resource_id", "dataset", "data_provider_id" from gbif_export);
 
+INSERT into instCodes (name) (select distinct  "institution_code" from gbif_export);
+
+INSERT into colCodes (name) (select distinct  "collection_code" from gbif_export);
+
+INSERT into scientificNames (name) (select distinct  "scientific_name" from gbif_export);
+
+INSERT into basisOfRecords (name) (select distinct  "basis_of_record" from gbif_export);
+
+
+### Taxonomy
 		
 insert into taxons (rank_id,name) (
 	select distinct  on (k_name) 0, k_name 
 	from flattaxons where k_name is not null order by k_name
 );
-update flattaxons set k_id = t.id from taxons t where (t.name = k_name);
 	 
 insert into taxons (rank_id,name, parent_id) (
 	select distinct  on (p_name, k_name) 1, p_name, k_id 
 	from flattaxons where p_name is not null order by p_name	
 );
-update flattaxons set p_id = t.id from taxons t where (t.name = p_name);
 
 insert into taxons (rank_id,name, parent_id) (
 	select distinct  on (c_name, p_name, k_name) 2, c_name, coalesce (p_id, k_id) 
 	from flattaxons where c_name is not null order by c_name	
 );
-update flattaxons set c_id = t.id from taxons t where (t.name = c_name);
 
 insert into taxons (rank_id,name, parent_id) (
 	select distinct  on (o_name, c_name, p_name, k_name) 3, o_name, coalesce (c_id, p_id, k_id) 
 	from flattaxons where o_name is not null order by o_name	
 );
-update flattaxons set o_id = t.id from taxons t where (t.name = o_name);
 
 insert into taxons (rank_id,name, parent_id) (
-	select distinct  on (f_name, o_name, c_name, p_name, k_name) 4, f_name, coalesce (o_id, c_id, p_id, k_id) 
-	from flattaxons where f_name is not null order by f_name	
-);
-update flattaxons set f_id = t.id from taxons t where (t.name = f_name);
-
-insert into taxons (rank_id,name, parent_id) (
-	select distinct  on (g_name, f_name, o_name, c_name, p_name, k_name) 5, g_name, coalesce (f_id, o_id, c_id, p_id, k_id) 
+	select distinct  on (g_name, o_name, c_name, p_name, k_name) 5, g_name, coalesce (o_id, c_id, p_id, k_id) 
 	from flattaxons where g_name is not null order by g_name	
 );
-update flattaxons set g_id = t.id from taxons t where (t.name = g_name);
-
-update flattaxons set k_name='' where k_name is null;
-update flattaxons set p_name='' where p_name is null;
-update flattaxons set c_name='' where c_name is null;
-update flattaxons set o_name='' where o_name is null;
-update flattaxons set f_name='' where f_name is null;
-update flattaxons set g_name='' where g_name is null;
-alter table gbif_occurrences add column ft_id int;
-update gbif_occurrences set ft_id=ft.id from flattaxons ft where (ft.k_name = coalesce("Kingdom",'') and ft.p_name= coalesce("Phylum",'') and ft.c_name= coalesce("Class",'') 
-		and ft.o_name=coalesce("Order",'') and ft.f_name=coalesce("Family",'') and ft.g_name=coalesce("Genus",''));
 
 
 
-
-			
-
+###Occurrences 
 INSERT INTO  occurrences ( 
 	 key,
 	 basisOfRecord_id,
@@ -106,43 +79,47 @@ INSERT INTO  occurrences (
 	 centi_cell_id,
 	 coordinates
 	)
- SELECT 
-	substr(occ."GBIF portal url",34)::int,
-	bor.id,
-	prov.id,
-	res.id,
-	occ."Date collected",
-	inst.id,
-	coll.id,
-	occ."Catalogue No",
-	occ."Last indexed",
-	occ."Scientific name",
-	sn.id,
-	ft.k_id,
-	ft.p_id,
-	ft.c_id,
-	ft.o_id,
-	ft.f_id,
-	ft.g_id,
----	occ."Locality",
-	substr(occ."Locality",0,1024),
-	country.id,
-	occ."Latitude" ,
-	occ."Longitude" ,
-	round(occ."Coordinate precision"::numeric,0) ,
-	occ."Cell id",
-	occ."Centi cell id",
-	GeomFromText( 'POINT(' || occ."Longitude" || ' ' || occ."Latitude" || ')', 4326)
-
- from gbif_occurrences occ
- LEFT JOIN basisOfRecords bor on (bor.name = occ."Basis of record")
- LEFT JOIN providers prov on (prov.name = occ."Data publisher" )
- LEFT JOIN resources res on (res.name = occ."Dataset" and res.provider_id = prov.id) 
- LEFT JOIN instCodes inst on(inst.name = occ."Institution code")
- LEFT JOIN colCodes coll on(coll.name = occ."Collection code")
- LEFT JOIN scientificNames sn on (sn.name = occ."Scientific name (interpreted)")
- LEFT JOIN countries country on (country.name = upper (occ."Publisher country"))
- LEFT JOIN flattaxons ft on (ft.id = occ.ft_id)
+		 SELECT 
+			occ."occurrence_id",
+			bor.id,
+			occ.data_provider_id,
+			occ.data_resource_id,
+			CASE
+			WHEN (occ."date_collected" ~ E'^\\d{4}-\\d{2}-\\d{2}') THEN to_date (occ."date_collected", 'YYYY-MM-DD')
+			ELSE NULL END as date_collected,
+			inst.id,
+			coll.id,
+			occ."catalogue_number",
+			occ."last_indexed",
+			occ."scientific_name",
+			sn.id,
+			tk.id,
+			tp.id,
+			tc.id,
+			tor.id,
+			NULL,
+			tg.id,
+			substr(occ."locality",0,1024),
+			country.id,
+			occ."latitude"::float ,
+			occ."longitude"::float ,
+			CASE 
+			WHEN (occ.coordinate_precision ~ E'^\\d+\\.?\\d+') THEN round(occ."coordinate_precision"::numeric,0) 
+			ELSE NULL END as coordinate_precision,
+			occ."cell_id",
+			occ."centi_cell_id",
+			point(occ."longitude"::float, occ."latitude"::float)
+		 from gbif_export occ
+		 LEFT JOIN basisOfRecords bor on (bor.name = occ."basis_of_record")
+		 LEFT JOIN instCodes inst on(inst.name = occ."institution_code")
+		 LEFT JOIN colCodes coll on(coll.name = occ."collection_code")
+		 LEFT JOIN scientificNames sn on (sn.name = occ."scientific_name")
+		 LEFT JOIN countries country on (country.code = upper (occ."provider_country"))
+		 LEFT JOIN taxons tk on tk.rank_id=0 and tk.name= occ."kingdom"
+		 LEFT JOIN taxons tp on tp.rank_id=1 and tp.name= occ."phylum" and tp.parent_id= tk.id
+		 LEFT JOIN taxons tc on tc.rank_id=2 and tc.name= occ."class" and tc.parent_id = tp.id
+		 LEFT JOIN taxons tor on tor.rank_id=3 and tor.name= occ."order_rank" and tor.parent_id = tc.id
+		 LEFT JOIN taxons tg on tg.rank_id=5 and tg.name= occ."genus" and tg.parent_id = tor.id
 ;
 
 --- DO THIS...	
@@ -161,14 +138,13 @@ create index torder_id_idx on occurrences (torder_id);
 create index tfamily_id_idx on occurrences (tfamily_id);
 create index tgenus_id_idx on occurrences (tgenus_id);
 
+alter table countries add column count integer;
+
 update providers set count = c.count from (select provider_id, count(provider_id) from occurrences group by provider_id) as c where providers.id=c.provider_id;
 update resources set count = c.count from (select resource_id, count(resource_id) from occurrences group by resource_id) as c where resources.id=c.resource_id;
-
-alter table countries add column count integer;
-update countries set count = c.count from (select providercountry_id, count(providercountry_id) from occurrences group by providercountry_id) as c where id=c.providercountry_id;
+update countries set count = c.count from (select providerCountry_id, count(providerCountry_id) from occurrences group by providerCountry_id) as c where id=c.providerCountry_id;
 		
-create or replace view georef_occ as
-select * from occurrences where coordinates is not null;
+create or replace view georef_occ as select * from occurrences where coordinates is not null;
 			
 alter table scientificnames add column col_url varchar(128);
 alter table scientificnames add column col_rank varchar(64);
@@ -195,4 +171,3 @@ update resources set geo_count = c.count from (select resource_id, count(resourc
 --alter table resources add column gbif_done boolean;
 
 #select * from resources where provider_id in (12, 107, 147, 260)  order by id;
-			

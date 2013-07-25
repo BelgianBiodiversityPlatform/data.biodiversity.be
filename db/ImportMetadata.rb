@@ -46,7 +46,7 @@ def  insert_with_fkey(xml, table_name, tags, fkey_xml, fkey_name)
   return sql
 end
 
-dbHost = "localhost"
+dbHost = "canis"
 dbPort = 5432
 dbName=ARGV[0]
 dbLogin=ARGV[1]

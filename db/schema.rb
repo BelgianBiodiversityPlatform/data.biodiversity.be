@@ -9,21 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111223111150) do
-
-  create_table "AnnexSpeciesPresence", :force => true do |t|
-    t.string "directive",   :limit => 18
-    t.string "speciesName", :limit => 61
-    t.string "annex I",     :limit => 1
-    t.string "annexII",     :limit => 1
-    t.string "annexII1",    :limit => 1
-    t.string "annexII2",    :limit => 1
-    t.string "annexIII1",   :limit => 1
-    t.string "annexIII2",   :limit => 1
-    t.string "annexIV",     :limit => 1
-    t.string "annexV",      :limit => 1
-    t.string "priority",    :limit => 1
-  end
+ActiveRecord::Schema.define(:version => 20090814132122) do
 
   create_table "basisofrecords", :force => true do |t|
     t.string "name", :limit => 256, :null => false
@@ -39,56 +25,24 @@ ActiveRecord::Schema.define(:version => 20111223111150) do
     t.integer "count"
   end
 
-  create_table "gbif_export", :id => false, :force => true do |t|
-    t.integer  "data_provider_id",                                        :null => false
-    t.integer  "data_resource_id",                                        :null => false
-    t.string   "data_provider"
-    t.string   "dataset"
-    t.string   "collector_name"
-    t.string   "date_collected",           :limit => 50
-    t.string   "institution_code"
-    t.string   "collection_code"
-    t.string   "catalogue_number"
-    t.string   "basis_of_record",          :limit => 100
-    t.datetime "last_indexed"
-    t.string   "identifier"
-    t.datetime "identification_date"
-    t.string   "scientific_name_original"
-    t.string   "author"
-    t.string   "scientific_name",                                         :null => false
-    t.string   "kingdom"
-    t.string   "phylum"
-    t.string   "class"
-    t.string   "order_rank"
-    t.string   "genus"
-    t.string   "country",                  :limit => 2
-    t.text     "locality"
-    t.string   "county",                   :limit => 100
-    t.string   "continent_or_ocean",       :limit => 100
-    t.string   "state_province",           :limit => 100
-    t.string   "region",                   :limit => 3
-    t.string   "provider_country",         :limit => 2
-    t.string   "latitude",                 :limit => 50
-    t.string   "longitude",                :limit => 50
-    t.string   "coordinate_precision",     :limit => 50
-    t.integer  "geospatial_issue"
-    t.integer  "cell_id"
-    t.integer  "centi_cell_id"
-    t.string   "min_depth",                :limit => 50
-    t.string   "max_depth",                :limit => 50
-    t.string   "min_altitude",             :limit => 50
-    t.string   "max_altitude",             :limit => 50
-    t.string   "altitude_precision",       :limit => 50
-    t.text     "gbif_portal_url",                         :default => "", :null => false
-    t.text     "gbif_webservice_url",                     :default => "", :null => false
-    t.integer  "occurrence_id",                                           :null => false
-    t.integer  "nub_concept_id"
+  create_table "flattaxons", :force => true do |t|
+    t.integer "k_id"
+    t.integer "p_id"
+    t.integer "c_id"
+    t.integer "o_id"
+    t.integer "f_id"
+    t.integer "g_id"
+    t.string  "k_name", :limit => 256
+    t.string  "p_name", :limit => 256
+    t.string  "c_name", :limit => 256
+    t.string  "o_name", :limit => 256
+    t.string  "f_name", :limit => 256
+    t.string  "g_name", :limit => 256
   end
 
   create_table "gbif_occurrences", :id => false, :force => true do |t|
-    t.text    "Data publisher"
+    t.text    "Data provider"
     t.text    "Dataset"
-    t.text    "Dataset Rigths"
     t.text    "Collector name"
     t.text    "Collector number"
     t.text    "Field number"
@@ -118,10 +72,10 @@ ActiveRecord::Schema.define(:version => 20111223111150) do
     t.text    "Continent or Ocean"
     t.text    "State/Province"
     t.text    "Region"
-    t.text    "Publisher country"
+    t.text    "Provider country"
     t.float   "Latitude"
     t.float   "Longitude"
-    t.text    "Coordinate precision"
+    t.float   "Coordinate precision"
     t.integer "Cell id"
     t.integer "Centi cell id"
     t.text    "Min depth"
@@ -135,90 +89,60 @@ ActiveRecord::Schema.define(:version => 20111223111150) do
     t.integer "ft_id"
   end
 
-  add_index "gbif_occurrences", ["GUID"], :name => "guid_idx", :unique => true
+  create_table "geometry_columns", :id => false, :force => true do |t|
+    t.string  "f_table_catalog",   :limit => 256, :null => false
+    t.string  "f_table_schema",    :limit => 256, :null => false
+    t.string  "f_table_name",      :limit => 256, :null => false
+    t.string  "f_geometry_column", :limit => 256, :null => false
+    t.integer "coord_dimension",                  :null => false
+    t.integer "srid",                             :null => false
+    t.string  "type",              :limit => 30,  :null => false
+  end
 
   create_table "instcodes", :force => true do |t|
     t.string "name", :limit => 256, :null => false
   end
 
-  create_table "occurrences", :force => true do |t|
+  create_table "networks", :force => true do |t|
     t.integer "key"
-    t.integer "basisofrecord_id"
+    t.string  "name", :limit => 256, :null => false
+  end
+
+  add_index "networks", ["key"], :name => "networks_key_key", :unique => true
+
+# Could not dump table "occurrences" because of following StandardError
+#   Unknown type 'geometry' for column 'coordinates'
+
+# Could not dump table "providers" because of following StandardError
+#   Unknown type 'geometry' for column 'coordinates'
+
+  create_table "ranks", :force => true do |t|
+    t.string "name", :limit => 256
+  end
+
+  create_table "resources", :force => true do |t|
+    t.integer "key"
+    t.string  "name",              :limit => 256,                :null => false
     t.integer "provider_id"
-    t.integer "resource_id"
-    t.date    "date_collected"
-    t.integer "instcode_id"
-    t.integer "colcode_id"
-    t.string  "catalogue_no",         :limit => 64
-    t.date    "last_indexed"
-    t.string  "scientific_name",      :limit => 256
-    t.integer "scientificname_id"
-    t.integer "tkingdom_id"
-    t.integer "tphylum_id"
-    t.integer "tclass_id"
-    t.integer "torder_id"
-    t.integer "tfamily_id"
-    t.integer "tgenus_id"
-    t.string  "locality",             :limit => 1024
-    t.integer "providercountry_id"
-    t.float   "latitude"
-    t.float   "longitude"
-    t.float   "coordinate_precision"
-    t.integer "cell_id"
-    t.integer "centi_cell_id"
-    t.string  "coordinates",          :limit => nil
+    t.integer "number_of_records",                :default => 0
+    t.integer "number_of_species",                :default => 0
+    t.date    "last_update"
+    t.integer "number_of_taxa",                   :default => 0
+    t.integer "count"
   end
 
-  add_index "occurrences", ["basisofrecord_id"], :name => "basisofrecord_id_idx"
-  add_index "occurrences", ["colcode_id"], :name => "colcole_id_idx"
-  add_index "occurrences", ["coordinates"], :name => "coordinates_idx"
-  add_index "occurrences", ["instcode_id"], :name => "instcode_id_idx"
-  add_index "occurrences", ["key"], :name => "occurrences_key_key", :unique => true
-  add_index "occurrences", ["provider_id"], :name => "provider_id_idx"
-  add_index "occurrences", ["resource_id"], :name => "resource_id_idx"
-  add_index "occurrences", ["tclass_id"], :name => "tclass_id_idx"
-  add_index "occurrences", ["tfamily_id"], :name => "tfamily_id_idx"
-  add_index "occurrences", ["tgenus_id"], :name => "tgenus_id_idx"
-  add_index "occurrences", ["tkingdom_id"], :name => "tkingdom_id_idx"
-  add_index "occurrences", ["torder_id"], :name => "torder_id_idx"
-  add_index "occurrences", ["tphylum_id"], :name => "tphylum_id_idx"
-  add_index "occurrences", [nil], :name => "sn_fulltext_idx"
-
-  create_table "providers", :id => false, :force => true do |t|
-    t.integer  "id",                                          :null => false
-    t.string   "name",                         :limit => 256, :null => false
-    t.string   "websiteurl",                   :limit => 256
-    t.integer  "taxonconceptcount"
-    t.integer  "occurrencecount"
-    t.integer  "georeferencedoccurrencecount"
-    t.string   "isocountrycode",               :limit => 2
-    t.integer  "country_id"
-    t.datetime "created"
-    t.datetime "modified"
-    t.integer  "count"
-  end
-
-  create_table "ranks", :id => false, :force => true do |t|
-    t.integer "id",                  :null => false
-    t.string  "name", :limit => 256
-  end
-
-  create_table "resources", :id => false, :force => true do |t|
-    t.integer  "id",                                  :null => false
-    t.integer  "provider_id"
-    t.string   "name",                 :limit => 256, :null => false
-    t.string   "defaultbasisofrecord", :limit => 64
-    t.datetime "created"
-    t.datetime "modified"
-    t.integer  "count"
-  end
+  add_index "resources", ["key"], :name => "resources_key_key", :unique => true
 
   create_table "scientificnames", :force => true do |t|
-    t.string  "name",            :limit => 256, :null => false
-    t.string  "col_url",         :limit => 128
-    t.string  "col_rank",        :limit => 64
-    t.string  "col_name_status", :limit => 64
-    t.boolean "col_done"
+    t.string "name", :limit => 256, :null => false
+  end
+
+  create_table "spatial_ref_sys", :id => false, :force => true do |t|
+    t.integer "srid",                      :null => false
+    t.string  "auth_name", :limit => 256
+    t.integer "auth_srid"
+    t.string  "srtext",    :limit => 2048
+    t.string  "proj4text", :limit => 2048
   end
 
   create_table "stats", :force => true do |t|
