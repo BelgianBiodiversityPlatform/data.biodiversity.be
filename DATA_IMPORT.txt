@@ -1,0 +1,50 @@
+-- NEW WAY using Belgian Data Slice--
+1/Load GBIF Export
+Run ImportGBIFExport.sql
+
+2/Create tables
+Run GBIFCreateSchema.sql
+
+3/ Populate occurrences
+Run Populate_from_export.sql 
+
+4/ add Catalog of Life info (network, providers, resources) using webservices
+(gem requirements: nokogiri, pg)
+
+$ ruby -rubygems colWebServices.rb <db> <user> <psswd>
+
+5/ Create PostGIS and indexes
+
+CREATE SCHEMA gis;
+Load postgis
+$ psql -d bdp -v schema=gis -f /usr/local/share/postgis/contrib/postgis-1.5/postgis.sql
+$ psql -d bdp -v schema=gis -f /usr/local/share/postgis/contrib/postgis-1.5/spatial_ref_sys.sql
+
+SET search_path TO gis, public;
+SELECT AddGeometryColumn('public', 'occurrences', 'coordinates_google', 900913, 'POINT', 2);
+
+
+SET search_path TO gis, public;
+UPDATE occurrences SET coordinates_google = ST_Transform(ST_SetSRID(ST_Point(longitude, latitude),4326), 900913);
+
+CREATE INDEX coordinates_google_idx
+  ON occurrences
+  USING gist
+  (coordinates_google);
+
++VACUUM + ANALYZE + REINDEX
++ Retirer ancien index geo
+
+(ALTER TABLE occurrences CLUSTER ON coordinates_google_idx;)
+
+
+# For (per-country) advanced search:
+
+CREATE INDEX providercountry_id_idx
+  ON occurrences
+  USING btree
+  (providercountry_id);
+
+  6/ Run migrations:
+
+  $ rake db:migrate

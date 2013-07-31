@@ -1,0 +1,11 @@
+To start (in staging, on dev):
+==============================
+
+$ unicorn_rails -p 3012 --path /bdp
+
+To start (in production):
+=========================
+
+$ source /home/www-datap/.bash_profile # To load RVM
+$ rvm 1.9.2
+$ unicorn_rails --config-file config/unicorn.rb -p 7006 -E production -D
