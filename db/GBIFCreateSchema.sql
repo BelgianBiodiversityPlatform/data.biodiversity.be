@@ -78,22 +78,22 @@ CREATE TABLE taxons (
  name	    varchar(256)
 );
 
-#DROP table flattaxons;
-#CREATE table flattaxons (
-#			id serial primary key,
-#			k_id int,
-#			p_id int,
-#			c_id int,
-#			o_id int,
-#			f_id int,
-#			g_id int,
-#			k_name varchar(256),
-#			p_name varchar(256),
-#			c_name varchar(256),
-#			o_name varchar(256),
-#			f_name varchar(256),
-#			g_name varchar(256)	
-#);
+DROP table flattaxons;
+CREATE table flattaxons (
+			id serial primary key,
+			k_id int,
+			p_id int,
+			c_id int,
+			o_id int,
+			f_id int,
+			g_id int,
+			k_name varchar(256),
+			p_name varchar(256),
+			c_name varchar(256),
+			o_name varchar(256),
+			f_name varchar(256),
+			g_name varchar(256)	
+);
 
 DROP TABLE occurrences CASCADE;
 CREATE TABLE occurrences(

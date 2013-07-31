@@ -1,11 +1,11 @@
-update gbif_export set "latitude" = replace("latitude", ',', '.'), "longitude" = replace("longitude", ',', '.')
+update gbif_export set "latitude" = replace("latitude", ',', '.'), "longitude" = replace("longitude", ',', '.');
 
-#countries and ranks
-COPY  countries (name, code) FROM '/home/aheugheb/db/BDP/Countries_UTF8.txt' HEADER CSV DELIMITER '\t' NULL AS '';
-COPY  ranks FROM '/home/aheugheb/db/BDP/ranks_UTF8.txt' HEADER CSV DELIMITER '\t' NULL AS '';
+-- countries and ranks
+COPY countries (name, code) FROM '/home/aheugheb/db/BDP/Countries_UTF8.txt' HEADER CSV DELIMITER '\t' NULL AS '';
+COPY ranks FROM '/home/aheugheb/db/BDP/ranks_UTF8.txt' HEADER CSV DELIMITER '\t' NULL AS '';
 
 
-###Providers, resources, institutions and collections codes
+-- Providers, resources, institutions and collections codes
 
 INSERT into providers (id,name, country_id) (
 	select distinct  on ("data_provider_id") "data_provider_id", "data_provider", country.id from gbif_export occ
@@ -22,7 +22,7 @@ INSERT into scientificNames (name) (select distinct  "scientific_name" from gbif
 INSERT into basisOfRecords (name) (select distinct  "basis_of_record" from gbif_export);
 
 
-### Taxonomy
+-- Taxonomy
 		
 insert into taxons (rank_id,name) (
 	select distinct  on (k_name) 0, k_name 
@@ -51,7 +51,7 @@ insert into taxons (rank_id,name, parent_id) (
 
 
 
-###Occurrences 
+---Occurrences 
 INSERT INTO  occurrences ( 
 	 key,
 	 basisOfRecord_id,
@@ -101,14 +101,35 @@ INSERT INTO  occurrences (
 			tg.id,
 			substr(occ."locality",0,1024),
 			country.id,
-			occ."latitude"::float ,
-			occ."longitude"::float ,
+			
+            CASE
+                WHEN (occ.latitude ~ E'^\\d+\\.?\\d+') 
+                THEN occ."latitude"::float
+                ELSE NULL
+            END as latitude,
+            
+            CASE 
+                WHEN (occ.longitude ~ E'^\\d+\\.?\\d+')
+                THEN occ."longitude"::float
+                ELSE NULL
+            END as longitude,    
+
 			CASE 
-			WHEN (occ.coordinate_precision ~ E'^\\d+\\.?\\d+') THEN round(occ."coordinate_precision"::numeric,0) 
-			ELSE NULL END as coordinate_precision,
+			    WHEN (occ.coordinate_precision ~ E'^\\d+\\.?\\d+') 
+                THEN round(occ."coordinate_precision"::numeric,0) 
+			    ELSE NULL 
+            END as coordinate_precision,
+
 			occ."cell_id",
 			occ."centi_cell_id",
-			point(occ."longitude"::float, occ."latitude"::float)
+
+            CASE
+                WHEN ((occ.latitude ~ E'^\\d+\\.?\\d+') AND (occ.longitude ~ E'^\\d+\\.?\\d+'))
+                THEN
+                    point(occ."longitude"::float, occ."latitude"::float)
+                ELSE NULL
+            END as coordinates
+
 		 from gbif_export occ
 		 LEFT JOIN basisOfRecords bor on (bor.name = occ."basis_of_record")
 		 LEFT JOIN instCodes inst on(inst.name = occ."institution_code")
@@ -152,13 +173,15 @@ alter table scientificnames add column col_name_status varchar(64);
 alter table scientificnames add column col_done boolean;
 update scientificnames set col_done=false;
 	
-## Added BIRDS and HABITAT Directives Species table
-alter table "AnnexSpeciesPresence" add column id serial;
-alter table "AnnexSpeciesPresence" add constraint asp_id primary key (id);
-alter table scientificnames add column annexSpecies_id integer references "AnnexSpeciesPresence";
-update scientificnames set annexSpecies_id = tmp.asp_id 
-from (select sn.id, asp.id as asp_id from scientificnames sn join "AnnexSpeciesPresence" asp on asp."speciesName"= sn.name) as tmp
-where scientificnames.id = tmp.id;
+-- Added BIRDS and HABITAT Directives Species table
+
+-- Hmmm, disable it because we don't use it so far and I'm not sure where AnnexSpeciesPresence table/data comes from...
+--alter table "AnnexSpeciesPresence" add column id serial;
+--alter table "AnnexSpeciesPresence" add constraint asp_id primary key (id);
+--alter table scientificnames add column annexSpecies_id integer references "AnnexSpeciesPresence";
+--update scientificnames set annexSpecies_id = tmp.asp_id 
+--from (select sn.id, asp.id as asp_id from scientificnames sn join "AnnexSpeciesPresence" asp on asp."speciesName"= sn.name) as tmp
+--where scientificnames.id = tmp.id;
 	
 alter table resources add column geo_count integer;
 update resources set geo_count = c.count from (select resource_id, count(resource_id) from occurrences where latitude is not null group by resource_id) as c where resources.id=c.resource_id;
@@ -170,4 +193,4 @@ update resources set geo_count = c.count from (select resource_id, count(resourc
 --alter table resources add column gbif_georeferencedOccurrenceCount integer;
 --alter table resources add column gbif_done boolean;
 
-#select * from resources where provider_id in (12, 107, 147, 260)  order by id;
+--select * from resources where provider_id in (12, 107, 147, 260)  order by id;

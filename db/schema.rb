@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090814132122) do
+ActiveRecord::Schema.define(:version => 20111223111150) do
 
   create_table "basisofrecords", :force => true do |t|
     t.string "name", :limit => 256, :null => false
@@ -40,109 +40,108 @@ ActiveRecord::Schema.define(:version => 20090814132122) do
     t.string  "g_name", :limit => 256
   end
 
-  create_table "gbif_occurrences", :id => false, :force => true do |t|
-    t.text    "Data provider"
-    t.text    "Dataset"
-    t.text    "Collector name"
-    t.text    "Collector number"
-    t.text    "Field number"
-    t.text    "GUID"
-    t.date    "Date collected"
-    t.text    "Institution code"
-    t.text    "Collection code"
-    t.text    "Catalogue No"
-    t.text    "Basis of record"
-    t.text    "Image url"
-    t.date    "Last indexed"
-    t.text    "Identifier"
-    t.date    "Identification date"
-    t.text    "Scientific name"
-    t.text    "Author"
-    t.text    "Scientific name (interpreted)"
-    t.text    "Kingdom"
-    t.text    "Phylum"
-    t.text    "Class"
-    t.text    "Order"
-    t.text    "Family"
-    t.text    "Genus"
-    t.text    "Country"
-    t.text    "Country (interpreted)"
-    t.text    "Locality"
-    t.text    "County"
-    t.text    "Continent or Ocean"
-    t.text    "State/Province"
-    t.text    "Region"
-    t.text    "Provider country"
-    t.float   "Latitude"
-    t.float   "Longitude"
-    t.float   "Coordinate precision"
-    t.integer "Cell id"
-    t.integer "Centi cell id"
-    t.text    "Min depth"
-    t.text    "Max depth"
-    t.text    "Max depth2"
-    t.text    "Min altitude"
-    t.text    "Max altitude"
-    t.text    "Altitude precision"
-    t.text    "GBIF portal url"
-    t.text    "GBIF webservice url"
-    t.integer "ft_id"
+  create_table "gbif_export", :id => false, :force => true do |t|
+    t.integer  "data_provider_id",                                        :null => false
+    t.integer  "data_resource_id",                                        :null => false
+    t.string   "data_provider"
+    t.string   "dataset"
+    t.string   "collector_name"
+    t.string   "date_collected",           :limit => 50
+    t.string   "institution_code"
+    t.string   "collection_code"
+    t.string   "catalogue_number"
+    t.string   "basis_of_record",          :limit => 100
+    t.datetime "last_indexed"
+    t.string   "identifier"
+    t.datetime "identification_date"
+    t.string   "scientific_name_original"
+    t.string   "author"
+    t.string   "scientific_name",                                         :null => false
+    t.string   "kingdom"
+    t.string   "phylum"
+    t.string   "class"
+    t.string   "order_rank"
+    t.string   "genus"
+    t.string   "country",                  :limit => 2
+    t.text     "locality"
+    t.string   "county",                   :limit => 100
+    t.string   "continent_or_ocean",       :limit => 100
+    t.string   "state_province",           :limit => 100
+    t.string   "region",                   :limit => 3
+    t.string   "provider_country",         :limit => 2
+    t.string   "latitude",                 :limit => 50
+    t.string   "longitude",                :limit => 50
+    t.string   "coordinate_precision",     :limit => 50
+    t.integer  "geospatial_issue"
+    t.integer  "cell_id"
+    t.integer  "centi_cell_id"
+    t.string   "min_depth",                :limit => 50
+    t.string   "max_depth",                :limit => 50
+    t.string   "min_altitude",             :limit => 50
+    t.string   "max_altitude",             :limit => 50
+    t.string   "altitude_precision",       :limit => 50
+    t.text     "gbif_portal_url",                         :default => "", :null => false
+    t.text     "gbif_webservice_url",                     :default => "", :null => false
+    t.integer  "occurrence_id",                                           :null => false
+    t.integer  "nub_concept_id"
   end
 
-  create_table "geometry_columns", :id => false, :force => true do |t|
-    t.string  "f_table_catalog",   :limit => 256, :null => false
-    t.string  "f_table_schema",    :limit => 256, :null => false
-    t.string  "f_table_name",      :limit => 256, :null => false
-    t.string  "f_geometry_column", :limit => 256, :null => false
-    t.integer "coord_dimension",                  :null => false
-    t.integer "srid",                             :null => false
-    t.string  "type",              :limit => 30,  :null => false
-  end
+  add_index "gbif_export", ["coordinate_precision"], :name => "aaaa"
+  add_index "gbif_export", ["latitude"], :name => "gbif_export_latitude_idx"
+  add_index "gbif_export", ["longitude"], :name => "gbif_export_longitude_idx"
 
   create_table "instcodes", :force => true do |t|
     t.string "name", :limit => 256, :null => false
   end
 
-  create_table "networks", :force => true do |t|
-    t.integer "key"
-    t.string  "name", :limit => 256, :null => false
+  create_table "networks", :id => false, :force => true do |t|
+    t.integer "id",                                         :null => false
+    t.string  "name",                         :limit => 64, :null => false
+    t.string  "shortidentifier",              :limit => 64, :null => false
+    t.string  "websiteurl",                   :limit => 64
+    t.integer "occurrencecount"
+    t.integer "georeferencedoccurrencecount"
   end
-
-  add_index "networks", ["key"], :name => "networks_key_key", :unique => true
 
 # Could not dump table "occurrences" because of following StandardError
-#   Unknown type 'geometry' for column 'coordinates'
+#   Unknown type 'geometry' for column 'coordinates_google'
 
-# Could not dump table "providers" because of following StandardError
-#   Unknown type 'geometry' for column 'coordinates'
-
-  create_table "ranks", :force => true do |t|
-    t.string "name", :limit => 256
+  create_table "providers", :id => false, :force => true do |t|
+    t.integer  "id",                                          :null => false
+    t.string   "name",                         :limit => 256, :null => false
+    t.string   "websiteurl",                   :limit => 256
+    t.integer  "taxonconceptcount"
+    t.integer  "occurrencecount"
+    t.integer  "georeferencedoccurrencecount"
+    t.string   "isocountrycode",               :limit => 2
+    t.integer  "country_id"
+    t.datetime "created"
+    t.datetime "modified"
+    t.integer  "count"
   end
 
-  create_table "resources", :force => true do |t|
-    t.integer "key"
-    t.string  "name",              :limit => 256,                :null => false
-    t.integer "provider_id"
-    t.integer "number_of_records",                :default => 0
-    t.integer "number_of_species",                :default => 0
-    t.date    "last_update"
-    t.integer "number_of_taxa",                   :default => 0
-    t.integer "count"
+  create_table "ranks", :id => false, :force => true do |t|
+    t.integer "id",                  :null => false
+    t.string  "name", :limit => 256
   end
 
-  add_index "resources", ["key"], :name => "resources_key_key", :unique => true
+  create_table "resources", :id => false, :force => true do |t|
+    t.integer  "id",                                  :null => false
+    t.integer  "provider_id"
+    t.string   "name",                 :limit => 256, :null => false
+    t.string   "defaultbasisofrecord", :limit => 64
+    t.datetime "created"
+    t.datetime "modified"
+    t.integer  "count"
+    t.integer  "geo_count"
+  end
 
   create_table "scientificnames", :force => true do |t|
-    t.string "name", :limit => 256, :null => false
-  end
-
-  create_table "spatial_ref_sys", :id => false, :force => true do |t|
-    t.integer "srid",                      :null => false
-    t.string  "auth_name", :limit => 256
-    t.integer "auth_srid"
-    t.string  "srtext",    :limit => 2048
-    t.string  "proj4text", :limit => 2048
+    t.string  "name",            :limit => 256, :null => false
+    t.string  "col_url",         :limit => 128
+    t.string  "col_rank",        :limit => 64
+    t.string  "col_name_status", :limit => 64
+    t.boolean "col_done"
   end
 
   create_table "stats", :force => true do |t|

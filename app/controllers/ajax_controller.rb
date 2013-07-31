@@ -157,7 +157,7 @@ class AjaxController < ApplicationController
     
     scope = scope.scoped :conditions => ['locality ILIKE ?', "%#{filters['locality']}%"] if filters.has_key?('locality')
     #scope = scope.scoped :conditions => ["contains (ST_Transform(ST_GeomFromText(?,96), 4326), ST_SetSRID(ST_Point(occurrences.longitude, occurrences.latitude),4326))", filters['polygon']] if filters.has_key?('polygon')
-    scope = scope.scoped :conditions => ["ST_contains (ST_GeomFromText(?,96), occurrences.coordinates_google)", filters['polygon']] if filters.has_key?('polygon')
+    scope = scope.scoped :conditions => ["ST_contains (ST_GeomFromText(?,900913), occurrences.coordinates_google)", filters['polygon']] if filters.has_key?('polygon')
     
     scope = scope.scoped :conditions => ['occurrences.providercountry_id = ?', filters['providercountry_id']] if filters.has_key?('providercountry_id')
     scope = scope.scoped :conditions => ['occurrences.provider_id = ?', filters['provider_id']] if filters.has_key?('provider_id')

@@ -44,7 +44,7 @@ CREATE TABLE GBIF_export (
   nub_concept_id integer default NULL
 ) ;
 
-COPY GBIF_export FROM '/home/aheugheb/db/BDP/standard_dump_BELGIUMa_20111116.txt' NULL AS E'\\N' DELIMITER E'\t';
-COPY GBIF_export FROM '/home/aheugheb/db/BDP/standard_dump_BELGIUMb_20111116.txt' NULL AS E'\\N' DELIMITER E'\t';
+COPY GBIF_export FROM '/home/nnoe/test_apps/standard_dump_BELGIUMa_20130718.txt' NULL AS E'\\N' DELIMITER E'\t';
+COPY GBIF_export FROM '/home/nnoe/test_apps/standard_dump_BELGIUMb_20130718.txt' NULL AS E'\\N' DELIMITER E'\t';
 
 
